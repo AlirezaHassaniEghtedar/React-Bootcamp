@@ -1,7 +1,9 @@
 :root {
   --color-white: hsl(0, 0%, 100%);
   --color-black: hsl(223, 100%, 7%);
+
   --color-primary: hsl(204, 99%, 52%);
+  --color-primary-outline: hsl(204, 99%, 52%, 40%);
 
   --color-bg-layer: hsl(223, 100%, 7%, 75%);
 

@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 
-import style from "./Header.module.css";
+import styles from "./Header.module.css";
 
 function Header(): ReactNode {
   return (
-    <div className={style.header}>
+    <div className={styles.header}>
       <h1>Dream Diary</h1>
     </div>
   );

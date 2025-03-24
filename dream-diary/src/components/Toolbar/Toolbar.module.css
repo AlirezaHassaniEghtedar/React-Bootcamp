@@ -1,0 +1,5 @@
+.toolbar {
+  inline-size: min(50rem, 100% - 2rem);
+
+  margin-inline: auto;
+}
