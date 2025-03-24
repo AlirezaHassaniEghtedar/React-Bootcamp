@@ -1,0 +1,13 @@
+.header {
+  display: flex;
+  justify-content: center;
+
+  padding: 3rem 1rem;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+
+    color: var(--color-text);
+  }
+}
