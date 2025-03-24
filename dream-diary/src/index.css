@@ -9,6 +9,9 @@
 
   --color-surface: var(--color-black);
   --color-text: var(--color-white);
+
+  --color-surface-elevated: var(--color-white);
+  --color-text-elevated: var(--color-black);
 }
 
 *,
@@ -22,6 +25,8 @@
 
 html {
   font-family: "Kanit", system-ui;
+
+  caret-color: transparent;
 }
 input,
 label,

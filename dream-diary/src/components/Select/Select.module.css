@@ -1,0 +1,48 @@
+.select {
+  position: relative;
+
+  border-radius: 0.25rem;
+
+  select {
+    background: var(--color-primary);
+    color: var(--color-text);
+
+    appearance: none;
+
+    block-size: 100%;
+    inline-size: 100%;
+
+    padding: 0.5rem;
+    padding-inline-end: calc(0.5rem + 1ch + 0.5rem);
+
+    border: none;
+    border-radius: inherit;
+
+    font-size: 1rem;
+    line-height: 1.375;
+
+    option {
+      background: var(--color-surface-elevated);
+      color: var(--color-text-elevated);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .suffix {
+    color: var(--color-text);
+
+    display: grid;
+
+    font-size: 1.5rem;
+
+    position: absolute;
+
+    inset-inline-end: 0.5rem;
+    inset-block-end: 50%;
+
+    transform: translateY(50%);
+  }
+}

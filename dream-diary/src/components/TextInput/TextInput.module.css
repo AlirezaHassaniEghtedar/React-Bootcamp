@@ -21,6 +21,8 @@
     font-size: 1rem;
     line-height: 1;
 
+    caret-color: var(--color-primary);
+
     &:focus {
       outline: none;
     }
@@ -28,6 +30,8 @@
 
   .suffix {
     color: var(--color-primary);
+
+    font-size: 1.5rem;
 
     display: grid;
   }
