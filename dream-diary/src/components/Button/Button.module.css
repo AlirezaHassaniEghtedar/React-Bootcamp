@@ -1,0 +1,74 @@
+.button {
+  display: inline-grid;
+  place-content: center;
+
+  cursor: pointer;
+
+  transition: var(--transition);
+
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+
+  &.solid {
+    background: var(--color-primary);
+    color: var(--color-white);
+
+    border: none;
+
+    &:hover,
+    &:focus {
+      background: var(--color-primary-hover);
+      box-shadow: var(--shadow);
+    }
+  }
+  &.outlined {
+    background: transparent;
+    color: var(--color-primary);
+    box-shadow: var(--shadow);
+
+    border: 1px solid var(--color-primary);
+
+    &:hover,
+    &:focus {
+      background: var(--color-primary-hover-fade);
+    }
+  }
+  &.medium {
+    block-size: 2.25rem;
+
+    svg {
+      block-size: 1.25rem;
+      inline-size: auto;
+    }
+  }
+  &.large {
+    block-size: 3rem;
+
+    svg {
+      block-size: 1.5rem;
+      inline-size: auto;
+    }
+  }
+  &.rectangle {
+    &.medium {
+      padding-inline: 0.5rem;
+    }
+    &.large {
+      padding-inline: 0.75rem;
+    }
+  }
+
+  &.rectangle,
+  &.square {
+    border-radius: 0.25rem;
+  }
+  &.square,
+  &.circle {
+    aspect-ratio: 1 / 1;
+  }
+  &.circle {
+    border-radius: 999rem;
+  }
+}

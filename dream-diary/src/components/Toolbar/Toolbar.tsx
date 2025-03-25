@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 
 import TextInput from "../TextInput/TextInput.tsx";
 import Select from "../Select/Select.tsx";
+import Button from "../Button/Button.tsx";
 
 import MingcuteSearch3Line from "../../icons/MingcuteSearch3Line.tsx";
 
@@ -23,7 +24,9 @@ function Toolbar(): ReactNode {
         ]}
         suffixIcon={<MingcuteDownFill />}
       />
-      <button>DarkLight Mode</button>
+      <Button variant="outlined" size="large" shape="circle">
+        <MingcuteSearch3Line />
+      </Button>
     </div>
   );
 }

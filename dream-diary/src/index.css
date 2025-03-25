@@ -3,6 +3,8 @@
   --color-black: hsl(223, 100%, 7%);
 
   --color-primary: hsl(204, 99%, 52%);
+  --color-primary-hover-fade: hsl(204, 99%, 95%);
+  --color-primary-hover: hsl(204, 48%, 36%);
   --color-primary-outline: hsl(204, 99%, 52%, 40%);
 
   --color-bg-layer: hsl(223, 100%, 7%, 75%);
@@ -12,6 +14,17 @@
 
   --color-surface-elevated: var(--color-white);
   --color-text-elevated: var(--color-black);
+
+  --shadow: 0 4px 140px 0 hsl(0, 0%, 0%, 33%);
+
+  --transition: all ease 0.3s;
+
+  &.light {
+    --color-primary-hover: hsl(204, 66%, 42%);
+
+    --color-surface: var(--color-white);
+    --color-text: var(--color-black);
+  }
 }
 
 *,

@@ -13,7 +13,7 @@
     inline-size: 100%;
 
     padding: 0.5rem;
-    padding-inline-end: calc(0.5rem + 1ch + 0.5rem);
+    padding-inline-end: calc(0.5rem + 1.5rem + 0.5rem);
 
     border: none;
     border-radius: inherit;
@@ -24,6 +24,10 @@
     option {
       background: var(--color-surface-elevated);
       color: var(--color-text-elevated);
+
+      &:hover {
+        background: var(--color-primary);
+      }
     }
 
     &:focus {
