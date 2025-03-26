@@ -9,6 +9,10 @@
   &:hover,
   &:focus {
     outline: none;
+
+    transition: var(--transition);
+
+    transform: translateY(-0.25rem);
   }
 
   &.primary {
@@ -29,7 +33,7 @@
 
     &:hover,
     &:focus {
-      background: var(--color-button-hover-hover);
+      background: var(--color-button-hover);
       box-shadow: var(--shadow);
     }
   }

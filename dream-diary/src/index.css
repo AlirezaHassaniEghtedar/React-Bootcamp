@@ -4,11 +4,13 @@
 
   --color-primary: hsl(204, 99%, 52%);
   --color-primary-hover-fade: hsl(204, 99%, 95%);
-  --color-primary-hover: hsl(204, 96%, 44%);
+  --color-primary-hover: hsl(204, 96%, 60%);
   --color-primary-outline: hsl(204, 99%, 52%, 40%);
 
   --color-danger: hsl(0, 99%, 52%);
+  --color-danger-hover-fade: hsl(0, 99%, 95%);
   --color-danger-hover: hsl(0, 96%, 44%);
+  --color-danger-outline: hsl(0, 99%, 52%, 40%);
 
   --color-bg-layer: hsl(223, 100%, 7%, 75%);
 
@@ -17,6 +19,8 @@
 
   --color-surface-elevated: var(--color-white);
   --color-text-elevated: var(--color-black);
+
+  --color-border: hsl(204, 99%, 25%);
 
   --shadow: 0 4px 140px 0 hsl(0, 0%, 0%, 33%);
 
@@ -56,6 +60,10 @@ output,
 option,
 optgroup {
   font-family: inherit;
+}
+
+ul {
+  list-style: none;
 }
 
 body {

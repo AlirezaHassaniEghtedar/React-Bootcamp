@@ -12,8 +12,8 @@ function Result(): ReactNode {
     <ul className={styles.result}>
       {dreams.map((dream) => (
         <li key={dream.title}>
-          <div className="title">{dream.title}</div>
-          <div className="actions">
+          <div className={styles.title}>{dream.title}</div>
+          <div className={styles.actions}>
             <Button color="primary" variant="ghost" size="small" shape="square">
               <MingcuteEdit2Line />
             </Button>
