@@ -8,11 +8,13 @@ import MingcuteSearch3Line from "../../icons/MingcuteSearch3Line.tsx";
 
 import styles from "./Toolbar.module.css";
 import MingcuteDownFill from "../../icons/MingcuteDownFill.tsx";
+import MingcuteSunLine from "../../icons/MingcuteSunLine.tsx";
 
 function Toolbar(): ReactNode {
   return (
     <div className={styles.toolbar}>
       <TextInput
+        className={styles["input-container"]}
         placeholder="Search Note ..."
         suffixIcon={<MingcuteSearch3Line />}
       />
@@ -24,8 +26,8 @@ function Toolbar(): ReactNode {
         ]}
         suffixIcon={<MingcuteDownFill />}
       />
-      <Button variant="outlined" size="large" shape="circle">
-        <MingcuteSearch3Line />
+      <Button variant="solid" size="large" shape="square">
+        <MingcuteSunLine />
       </Button>
     </div>
   );

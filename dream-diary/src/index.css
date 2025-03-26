@@ -4,8 +4,11 @@
 
   --color-primary: hsl(204, 99%, 52%);
   --color-primary-hover-fade: hsl(204, 99%, 95%);
-  --color-primary-hover: hsl(204, 48%, 36%);
+  --color-primary-hover: hsl(204, 96%, 44%);
   --color-primary-outline: hsl(204, 99%, 52%, 40%);
+
+  --color-danger: hsl(0, 99%, 52%);
+  --color-danger-hover: hsl(0, 96%, 44%);
 
   --color-bg-layer: hsl(223, 100%, 7%, 75%);
 
