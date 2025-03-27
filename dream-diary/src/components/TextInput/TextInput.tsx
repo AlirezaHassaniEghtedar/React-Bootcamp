@@ -1,7 +1,6 @@
 import { ComponentProps, ReactNode } from "react";
 
 import styles from "./TextInput.module.css";
-
 import clsx from "clsx";
 
 type Props = ComponentProps<"input"> & {

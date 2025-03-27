@@ -4,9 +4,9 @@ import TextInput from "../TextInput/TextInput.tsx";
 import Select from "../Select/Select.tsx";
 import Button from "../Button/Button.tsx";
 
-import MingcuteSearch3Line from "../../icons/MingcuteSearch3Line.tsx";
-
 import styles from "./Toolbar.module.css";
+
+import MingcuteSearch3Line from "../../icons/MingcuteSearch3Line.tsx";
 import MingcuteDownFill from "../../icons/MingcuteDownFill.tsx";
 import MingcuteSunLine from "../../icons/MingcuteSunLine.tsx";
 

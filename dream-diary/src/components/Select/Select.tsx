@@ -1,11 +1,10 @@
 import { ComponentProps, ReactNode } from "react";
 
-import styles from "./Select.module.css";
-
 import { SelectOption } from "../../types/select-options.ts";
-import clsx from "clsx";
+import { Variant } from "../../types/select-variant.ts";
 
-type Variant = "solid" | "outlined";
+import styles from "./Select.module.css";
+import clsx from "clsx";
 
 type Props = ComponentProps<"select"> & {
   variant?: Variant;

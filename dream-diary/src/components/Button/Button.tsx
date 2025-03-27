@@ -1,8 +1,7 @@
 import { ComponentProps, ReactNode } from "react";
 
-import clsx from "clsx";
-
 import styles from "./Button.module.css";
+import clsx from "clsx";
 
 type Color = "primary" | "danger";
 type Variant = "solid" | "outlined" | "ghost";

@@ -2,8 +2,10 @@ import { ReactNode } from "react";
 
 const dreams = [{ title: "dream1" }, { title: "dream2" }, { title: "dream3" }];
 
-import styles from "./Result.module.css";
 import Button from "../Button/Button.tsx";
+
+import styles from "./Result.module.css";
+
 import MingcuteEdit2Line from "../../icons/MingcuteEdit2Line.tsx";
 import MingcuteDelete2Line from "../../icons/MingcuteDelete2Line.tsx";
 
