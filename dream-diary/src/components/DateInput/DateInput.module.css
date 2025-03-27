@@ -1,0 +1,21 @@
+.date-input {
+  background: transparent;
+  color: var(--color-primary);
+
+  border-radius: 0.25rem;
+  border: 1px solid var(--color-primary);
+
+  font-size: 1rem;
+  font-weight: 500;
+
+  padding: 0.5rem;
+
+  &:focus {
+    outline: 2px solid var(--color-primary-outline);
+  }
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(47%) sepia(97%) saturate(740%) hue-rotate(174deg)
+    brightness(100%);
+}

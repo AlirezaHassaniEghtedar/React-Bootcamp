@@ -1,0 +1,28 @@
+.bg-layer {
+  background-image: url("../../../public/assets/images/background.jpg");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  inline-size: 100vw;
+  block-size: 100vh;
+
+  position: fixed;
+
+  z-index: -1;
+
+  &::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    inline-size: 100%;
+    block-size: 100%;
+
+    background: var(--color-bg-layer);
+
+    z-index: -1;
+  }
+}

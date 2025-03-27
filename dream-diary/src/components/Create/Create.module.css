@@ -1,0 +1,49 @@
+.create {
+  position: fixed;
+
+  inset-inline-end: 2rem;
+  inset-block-end: 2rem;
+
+  dialog {
+    color: var(--color-text);
+    background: var(--color-bg-layer);
+
+    inline-size: min(30rem, 100% - 2rem);
+
+    border: none;
+    border-radius: 0.5rem;
+
+    margin: auto;
+
+    &::backdrop {
+      background: var(--color-backdrop);
+      backdrop-filter: blur(3px);
+    }
+
+    .content {
+      display: grid;
+
+      gap: 1rem;
+
+      padding: 1rem;
+
+      .title {
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+
+      .actions {
+        display: flex;
+
+        justify-content: space-between;
+
+        gap: 1rem;
+
+        button {
+          font-size: 1rem;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

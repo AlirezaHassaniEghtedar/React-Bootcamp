@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  justify-content: center;
+
+  padding: 3rem 1rem;
+
+  inline-size: min(50rem, 100% - 2rem);
+
+  margin-inline: auto;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+
+    color: var(--color-text);
+  }
+}
