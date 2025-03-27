@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef } from "react";
+import { ReactNode, useRef } from "react";
 
 import TextInput from "../TextInput/TextInput.tsx";
 import Button from "../Button/Button.tsx";
@@ -21,10 +21,6 @@ function Create(): ReactNode {
   function cancelButtonClickHandler(): void {
     dialogRef.current?.close();
   }
-
-  useEffect(() => {
-    addButtonClickHandler();
-  }, []);
 
   return (
     <div className={styles.create}>
