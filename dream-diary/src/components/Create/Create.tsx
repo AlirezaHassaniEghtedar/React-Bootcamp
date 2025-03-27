@@ -7,6 +7,9 @@ import MingcuteAddFill from "../../icons/MingcuteAddFill.tsx";
 
 import styles from "./Create.module.css";
 import TextArea from "../TextArea/TextArea.tsx";
+import DateInput from "../DateInput/DateInput.tsx";
+import Select from "../Select/Select.tsx";
+import MingcuteDownFill from "../../icons/MingcuteDownFill.tsx";
 
 function Create(): ReactNode {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -14,6 +17,7 @@ function Create(): ReactNode {
   function addButtonClickHandler(): void {
     dialogRef.current?.showModal();
   }
+
   function cancelButtonClickHandler(): void {
     dialogRef.current?.close();
   }
@@ -32,6 +36,15 @@ function Create(): ReactNode {
           <div className={styles.title}>Create a New Dream</div>
           <TextInput placeholder="Input your title ..." />
           <TextArea />
+          <DateInput />
+          <Select
+            variant="outlined"
+            options={[
+              { value: "good", label: "Good" },
+              { value: "bad", label: "Bad" },
+            ]}
+            suffixIcon={<MingcuteDownFill />}
+          />
           <div className={styles.actions}>
             <Button variant="outlined" onClick={cancelButtonClickHandler}>
               Cancel
