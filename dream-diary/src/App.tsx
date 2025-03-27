@@ -6,6 +6,7 @@ import Toolbar from "../src/components/Toolbar/Toolbar.tsx";
 import Result from "../src/components/Result/Result.tsx";
 
 import "./App.css";
+import Create from "./components/Create/Create.tsx";
 
 function App(): ReactNode {
   return (
@@ -14,6 +15,7 @@ function App(): ReactNode {
       <Header />
       <Toolbar />
       <Result />
+      <Create />
     </div>
   );
 }
