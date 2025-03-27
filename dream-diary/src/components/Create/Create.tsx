@@ -31,7 +31,7 @@ function Create(): ReactNode {
         <div className={styles.content}>
           <div className={styles.title}>Create a New Dream</div>
           <TextInput placeholder="Input your title ..." />
-          <TextArea />
+          <TextArea placeholder="Input your description ..." />
           <DateInput />
           <Select
             variant="outlined"
