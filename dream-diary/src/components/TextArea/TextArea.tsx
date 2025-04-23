@@ -1,6 +1,7 @@
-import { ComponentProps, ReactNode } from "react";
+import {ComponentProps, ReactNode} from "react";
 
 import styles from "./TextArea.module.css";
+
 import clsx from "clsx";
 
 type Props = ComponentProps<"textarea">;
