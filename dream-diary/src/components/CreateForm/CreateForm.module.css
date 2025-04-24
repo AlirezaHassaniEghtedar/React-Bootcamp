@@ -1,0 +1,26 @@
+.create-form {
+    display: grid;
+
+    gap: 1rem;
+
+    padding: 1rem;
+
+    .title {
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+
+    .actions {
+        display: flex;
+
+        justify-content: space-between;
+
+        gap: 1rem;
+
+        button {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+    }
+
+}
