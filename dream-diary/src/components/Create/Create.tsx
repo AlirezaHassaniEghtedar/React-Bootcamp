@@ -1,7 +1,7 @@
 import {ReactNode, useRef} from "react";
 
 import Button from "../Button/Button.tsx";
-import CreateForm from "../CreateForm/CreateForm.tsx";
+import CreateForm from "./components/CreateForm/CreateForm.tsx";
 
 import styles from "./Create.module.css";
 

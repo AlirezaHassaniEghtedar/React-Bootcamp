@@ -1,17 +1,18 @@
 import {FormEvent, ReactNode, useContext} from "react";
 
-import TextInput from "../TextInput/TextInput.tsx";
-import TextArea from "../TextArea/TextArea.tsx";
-import DateInput from "../DateInput/DateInput.tsx";
-import Select from "../Select/Select.tsx";
-import Button from "../Button/Button.tsx";
+import TextInput from "../../../TextInput/TextInput.tsx";
+import TextArea from "../../../TextArea/TextArea.tsx";
+import DateInput from "../../../DateInput/DateInput.tsx";
+import Select from "../../../Select/Select.tsx";
+import Button from "../../../Button/Button.tsx";
 
-import MingcuteDownFill from "../../icons/MingcuteDownFill.tsx";
+import {DreamsContext} from "../../../../context/dreams-context.ts";
+
+import MingcuteDownFill from "../../../../icons/MingcuteDownFill.tsx";
 
 import styles from "./CreateForm.module.css";
 
-import {Vibe} from "../../types/vibe.ts";
-import {DreamsContext} from "../../App.tsx";
+import {Vibe} from "../../../../types/vibe.ts";
 
 type Props = {
     onCancel : VoidFunction;

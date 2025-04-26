@@ -4,9 +4,10 @@ import Button from "../Button/Button.tsx";
 
 import styles from "./Result.module.css";
 
+import {DreamsContext} from "../../context/dreams-context.ts";
+
 import MingcuteEdit2Line from "../../icons/MingcuteEdit2Line.tsx";
 import MingcuteDelete2Line from "../../icons/MingcuteDelete2Line.tsx";
-import {DreamsContext} from "../../App.tsx";
 
 function Result(): ReactNode {
   const {dreams} = useContext(DreamsContext)
