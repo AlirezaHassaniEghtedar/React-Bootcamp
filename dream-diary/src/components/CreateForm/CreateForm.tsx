@@ -1,4 +1,4 @@
-import {Dispatch, FormEvent, ReactNode, SetStateAction} from "react";
+import {FormEvent, ReactNode, useContext} from "react";
 
 import TextInput from "../TextInput/TextInput.tsx";
 import TextArea from "../TextArea/TextArea.tsx";
@@ -11,15 +11,16 @@ import MingcuteDownFill from "../../icons/MingcuteDownFill.tsx";
 import styles from "./CreateForm.module.css";
 
 import {Vibe} from "../../types/vibe.ts";
-import {Dream} from "../../types/dream.ts";
+import {DreamsContext} from "../../App.tsx";
 
 type Props = {
-    setDreams : Dispatch<SetStateAction<Dream[]>>
     onCancel : VoidFunction;
     onSubmit : VoidFunction;
 }
 
-function CreateForm({setDreams , onCancel , onSubmit} : Props): ReactNode {
+function CreateForm({onCancel , onSubmit} : Props): ReactNode {
+    const {setDreams} = useContext(DreamsContext)
+
     function formSubmitHandler(e: FormEvent<HTMLFormElement>): void {
         e.preventDefault();
 

@@ -1,4 +1,4 @@
-import {ReactNode, useRef, Dispatch, SetStateAction} from "react";
+import {ReactNode, useRef} from "react";
 
 import Button from "../Button/Button.tsx";
 import CreateForm from "../CreateForm/CreateForm.tsx";
@@ -7,13 +7,7 @@ import styles from "./Create.module.css";
 
 import MingcuteAddFill from "../../icons/MingcuteAddFill.tsx";
 
-import {Dream} from "../../types/dream.ts";
-
-type Props = {
-    setDreams : Dispatch<SetStateAction<Dream[]>>
-}
-
-function Create({setDreams} : Props): ReactNode {
+function Create(): ReactNode {
     const dialogRef = useRef<HTMLDialogElement>(null);
 
     function addButtonClickHandler(): void {
@@ -30,7 +24,7 @@ function Create({setDreams} : Props): ReactNode {
                 <MingcuteAddFill/>
             </Button>
             <dialog ref={dialogRef}>
-                <CreateForm setDreams={setDreams} onCancel={closeModal} onSubmit={closeModal} />
+                <CreateForm onCancel={closeModal} onSubmit={closeModal} />
             </dialog>
         </div>
     );

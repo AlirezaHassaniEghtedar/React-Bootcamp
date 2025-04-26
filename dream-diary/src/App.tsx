@@ -1,4 +1,4 @@
-import {ReactNode, useState} from "react";
+import {createContext, Dispatch, ReactNode, SetStateAction, useState} from "react";
 
 import BackgroundLayer from "../src/components/BackgroundLayer/BackgroundLayer.tsx";
 import Header from "../src/components/Header/Header.tsx";
@@ -6,8 +6,19 @@ import Toolbar from "../src/components/Toolbar/Toolbar.tsx";
 import Result from "../src/components/Result/Result.tsx";
 
 import "./App.css";
+
 import Create from "./components/Create/Create.tsx";
 import {Dream} from "./types/dream.ts";
+
+type DreamsContextValue = {
+    dreams : Dream[];
+    setDreams : Dispatch<SetStateAction<Dream[]>>;
+}
+
+export const DreamsContext = createContext<DreamsContextValue>({
+    dreams : [] ,
+    setDreams : () => {}
+});
 
 function App(): ReactNode {
     const [dreams, setDreams] = useState<Dream[]>([
@@ -17,15 +28,15 @@ function App(): ReactNode {
     ])
     
   return (
-    <div>
+    <DreamsContext.Provider value={{dreams , setDreams}}>
       <BackgroundLayer />
       <Header />
       <main>
           <Toolbar />
-          <Result dreams={dreams}/>
+          <Result/>
       </main>
-      <Create setDreams={setDreams}/>
-    </div>
+      <Create/>
+    </DreamsContext.Provider>
   );
 }
 
