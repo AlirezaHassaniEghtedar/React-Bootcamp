@@ -1,21 +1,36 @@
-import {PropsWithChildren, ReactNode, useState} from "react";
+import {PropsWithChildren, ReactNode, useEffect, useState} from "react";
 
 import {DreamsContext} from "../context/dreams-context.ts";
 
 import {Dream} from "../types/dream.ts";
 
+import {DREAMS_LOCAL_STORAGE_KEYS} from "../constants/local-storage-keys.ts";
+
+type LocalStorageDream = Omit<Dream, "date"> & { date : string };
+
 type Props = PropsWithChildren;
 
 export default function DreamsProvider({children}: Props): ReactNode {
-    const [dreams, setDreams] = useState<Dream[]>([
-        {id: "1", title: "dream1", description: "description 1", date: new Date(2025, 1, 14), vibe: "good"},
-        {id: "2", title: "dream2", description: "description 2", date: new Date(2025, 2, 14), vibe: "bad"},
-        {id: "3", title: "dream3", description: "description 3", date: new Date(2025, 4, 14), vibe: "good"},
-    ])
+    const [dreams, setDreams] = useState<Dream[]>(loadDreamsInitialState)
+
+    useEffect(() => {
+        localStorage.setItem(DREAMS_LOCAL_STORAGE_KEYS , JSON.stringify(dreams))
+    }, []);
 
     return (
         <DreamsContext.Provider value={{dreams, setDreams}}>
             {children}
         </DreamsContext.Provider>
     )
+}
+
+function loadDreamsInitialState () : Dream[] {
+    const item = localStorage.getItem(DREAMS_LOCAL_STORAGE_KEYS)
+
+    if ( ! item) {
+        return[]
+    }
+
+    const parsedDreams = JSON.parse(item) as LocalStorageDream[];
+    return parsedDreams.map(dream => ({...dream , date : new Date(dream.date)}));
 }

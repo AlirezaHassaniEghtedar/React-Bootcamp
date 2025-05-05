@@ -60,7 +60,7 @@ function CreateForm({onCancel , onSubmit} : Props): ReactNode {
                     suffixIcon={<MingcuteDownFill/>}
             />
             <div className={styles.actions}>
-                <Button variant="outlined" onClick={onCancel}>
+                <Button variant="outlined" type="button" onClick={onCancel}>
                     Cancel
                 </Button>
                 <Button>Apply</Button>
