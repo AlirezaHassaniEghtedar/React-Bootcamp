@@ -15,12 +15,12 @@ import styles from "./CreateForm.module.css";
 import {Vibe} from "../../../../types/vibe.ts";
 
 type Props = {
-    onCancel : VoidFunction;
-    onSubmit : VoidFunction;
+    onCancel: VoidFunction;
+    onSubmit: VoidFunction;
 }
 
-function CreateForm({onCancel , onSubmit} : Props): ReactNode {
-    const {setDreams} = useContext(DreamsContext)
+function CreateForm({onCancel, onSubmit}: Props): ReactNode {
+    const {createDream} = useContext(DreamsContext)
 
     function formSubmitHandler(e: FormEvent<HTMLFormElement>): void {
         e.preventDefault();
@@ -40,7 +40,7 @@ function CreateForm({onCancel , onSubmit} : Props): ReactNode {
             vibe: formData.get('vibe') as Vibe
         }
 
-        setDreams(old => [...old, dream])
+        createDream(dream)
 
         onSubmit()
     }
