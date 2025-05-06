@@ -28,8 +28,8 @@
 
   --transition: all ease 0.3s;
 
-  &.light {
-    --color-primary-hover: hsl(204, 66%, 42%);
+  &[data-theme="light"] {
+    --color-bg-layer: hsl(223, 100%, 100%, 85%);
 
     --color-surface: var(--color-white);
     --color-text: var(--color-black);

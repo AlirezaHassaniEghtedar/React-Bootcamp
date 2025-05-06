@@ -4,7 +4,7 @@ import {DreamsContext} from "../context/dreams-context.ts";
 
 import {Dream} from "../types/dream.ts";
 
-import {DREAMS_LOCAL_STORAGE_KEYS} from "../constants/local-storage-keys.ts";
+import {DREAMS_LOCAL_STORAGE_KEY} from "../constants/local-storage-keys.ts";
 
 type LocalStorageDream = Omit<Dream, "date"> & { date: string };
 
@@ -14,7 +14,7 @@ export default function DreamsProvider({children}: Props): ReactNode {
     const [dreams, setDreams] = useState<Dream[]>(loadDreamsInitialState)
 
     useEffect(() => {
-        localStorage.setItem(DREAMS_LOCAL_STORAGE_KEYS, JSON.stringify(dreams))
+        localStorage.setItem(DREAMS_LOCAL_STORAGE_KEY, JSON.stringify(dreams))
     }, [dreams]);
 
     const createDream = (dream: Dream): void => {
@@ -33,7 +33,7 @@ export default function DreamsProvider({children}: Props): ReactNode {
 }
 
 function loadDreamsInitialState(): Dream[] {
-    const item = localStorage.getItem(DREAMS_LOCAL_STORAGE_KEYS)
+    const item = localStorage.getItem(DREAMS_LOCAL_STORAGE_KEY)
 
     if (!item) {
         return []

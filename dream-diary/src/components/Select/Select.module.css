@@ -21,7 +21,7 @@
   }
 
   select {
-    color: var(--color-text);
+    color: var(--color-white);
 
     appearance: none;
 
@@ -52,7 +52,7 @@
   }
 
   .suffix {
-    color: var(--color-text);
+    color: var(--color-white);
 
     display: grid;
 

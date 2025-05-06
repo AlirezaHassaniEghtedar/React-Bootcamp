@@ -47,7 +47,7 @@
     &:hover,
     &:focus {
       background: var(--color-button);
-      color: var(--color-text);
+      color: var(--color-white);
     }
   }
 
@@ -60,7 +60,7 @@
     &:hover,
     &:focus {
       background: var(--color-button);
-      color: var(--color-text);
+      color: var(--color-white);
     }
   }
 

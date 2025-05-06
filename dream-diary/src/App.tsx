@@ -6,6 +6,7 @@ import Toolbar from "../src/components/Toolbar/Toolbar.tsx";
 import Result from "../src/components/Result/Result.tsx";
 import Create from "./components/Create/Create.tsx";
 
+import ThemeProvider from "./providers/ThemeProvider.tsx";
 import DreamsProvider from "./providers/DreamsProvider.tsx";
 
 import "./App.css";
@@ -13,15 +14,17 @@ import "./App.css";
 
 function App(): ReactNode {
     return (
-        <DreamsProvider>
-            <BackgroundLayer/>
-            <Header/>
-            <main>
-                <Toolbar/>
-                <Result/>
-            </main>
-            <Create/>
-        </DreamsProvider>
+        <ThemeProvider>
+            <DreamsProvider>
+                <BackgroundLayer/>
+                <Header/>
+                <main>
+                    <Toolbar/>
+                    <Result/>
+                </main>
+                <Create/>
+            </DreamsProvider>
+        </ThemeProvider>
     );
 }
 
