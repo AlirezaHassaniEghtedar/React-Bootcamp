@@ -28,7 +28,9 @@ export default function ThemeProvider({children}: Props): ReactNode {
 }
 
 function loadThemeInitialState(): Theme {
-    const item = localStorage.getItem(THEME_LOCAL_STORAGE_KEY)
+    const item = localStorage.getItem(THEME_LOCAL_STORAGE_KEY);
 
-    return item === "light" || item === "dark" ? item : "light";
+    const defaultTheme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+
+    return item === "light" || item === "dark" ? item : defaultTheme;
 }
