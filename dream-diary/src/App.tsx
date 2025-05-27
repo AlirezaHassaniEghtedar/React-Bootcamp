@@ -5,6 +5,7 @@ import Header from "../src/components/Header/Header.tsx";
 import Toolbar from "../src/components/Toolbar/Toolbar.tsx";
 import Result from "../src/components/Result/Result.tsx";
 import Create from "./components/Create/Create.tsx";
+import Toaster from "./components/Toaster/Toaster.tsx";
 
 import ThemeProvider from "./providers/ThemeProvider.tsx";
 import DreamsProvider from "./providers/DreamsProvider.tsx";
@@ -23,6 +24,7 @@ function App(): ReactNode {
                     <Result/>
                 </main>
                 <Create/>
+                <Toaster />
             </DreamsProvider>
         </ThemeProvider>
     );

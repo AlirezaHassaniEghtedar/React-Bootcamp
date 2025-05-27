@@ -1,12 +1,12 @@
 import {PropsWithChildren, ReactNode, useEffect, useState} from "react";
 
-import {DreamsContext} from "../context/dreams-context.ts";
-
-import {Dream} from "../types/dream.ts";
+import {toast} from "react-toastify";
 
 import {DREAMS_LOCAL_STORAGE_KEY} from "../constants/local-storage-keys.ts";
 
-type LocalStorageDream = Omit<Dream, "date"> & { date: string };
+import {DreamsContext} from "../context/dreams-context.ts";
+
+import {Dream} from "../types/dream.ts";
 
 type Props = PropsWithChildren;
 
@@ -19,14 +19,17 @@ export default function DreamsProvider({children}: Props): ReactNode {
 
     const createDream = (dream: Dream): void => {
         setDreams(old => [...old, {...dream}])
+        toast.success("Dream created successfully.")
     }
 
     const editDream = (dream: Dream): void => {
         setDreams((old) => old.map((x) => (x.id === dream.id ? {...dream} : x)))
+        toast.success("Dream edited successfully.")
     };
 
     const removeDream = (id: string): void => {
         setDreams(old => old.filter(x => x.id !== id))
+        toast.success("Dream removed successfully.")
     }
 
     return (
