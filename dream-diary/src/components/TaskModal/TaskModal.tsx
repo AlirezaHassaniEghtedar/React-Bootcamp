@@ -1,6 +1,6 @@
 import {forwardRef, ReactNode, useContext, useEffect, useImperativeHandle, useRef} from "react";
 
-import CreateForm from "../Create/components/CreateForm/CreateForm.tsx";
+import TaskForm from "../TaskForm/TaskForm.tsx";
 
 import {DreamsContext} from "../../context/dreams-context.ts";
 
@@ -34,8 +34,8 @@ const TaskModal = forwardRef<TaskModalRef>(function TaskModal(_, outerRef): Reac
     }
 
     return <dialog ref={innerRef} className={styles["task-modal"]}>
-        {editingDream && <CreateForm onCancel={closeModal} onSubmit={closeModal}/>}
-        {!editingDream && <CreateForm onCancel={closeModal} onSubmit={closeModal}/>}
+        {editingDream && <TaskForm onCancel={closeModal} onSubmit={closeModal}/>}
+        {!editingDream && <TaskForm onCancel={closeModal} onSubmit={closeModal}/>}
     </dialog>
 })
 

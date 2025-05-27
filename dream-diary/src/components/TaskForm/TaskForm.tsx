@@ -1,25 +1,25 @@
 import {FormEvent, ReactNode, useContext} from "react";
 
-import TextInput from "../../../TextInput/TextInput.tsx";
-import TextArea from "../../../TextArea/TextArea.tsx";
-import DateInput from "../../../DateInput/DateInput.tsx";
-import Select from "../../../Select/Select.tsx";
-import Button from "../../../Button/Button.tsx";
+import TextInput from "../TextInput/TextInput.tsx";
+import TextArea from "../TextArea/TextArea.tsx";
+import DateInput from "../DateInput/DateInput.tsx";
+import Select from "../Select/Select.tsx";
+import Button from "../Button/Button.tsx";
 
-import {DreamsContext} from "../../../../context/dreams-context.ts";
+import {DreamsContext} from "../../context/dreams-context.ts";
 
-import MingcuteDownFill from "../../../../icons/MingcuteDownFill.tsx";
+import MingcuteDownFill from "../../icons/MingcuteDownFill.tsx";
 
-import styles from "./CreateForm.module.css";
+import styles from "./TaskForm.module.css";
 
-import {Vibe} from "../../../../types/vibe.ts";
+import {Vibe} from "../../types/vibe.ts";
 
 type Props = {
     onCancel: VoidFunction;
     onSubmit: VoidFunction;
 }
 
-function CreateForm({onCancel, onSubmit}: Props): ReactNode {
+function TaskForm({onCancel, onSubmit}: Props): ReactNode {
     const {createDream ,editDream, editingDream} = useContext(DreamsContext)
 
     function formSubmitHandler(e: FormEvent<HTMLFormElement>): void {
@@ -84,4 +84,4 @@ function pad(text : number) : string {
     return text.toString().padStart(2 , "0");
 }
 
-export default CreateForm;
+export default TaskForm;
