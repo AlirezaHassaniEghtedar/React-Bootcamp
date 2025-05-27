@@ -1,34 +1,50 @@
-import {ReactNode, useContext} from "react";
+import {ReactNode, useContext, useRef, useState} from "react";
 
 import Button from "../Button/Button.tsx";
-
-import styles from "./Result.module.css";
+import TaskModal, {TaskModalRef} from "../TaskModal/TaskModal.tsx";
 
 import {DreamsContext} from "../../context/dreams-context.ts";
 
 import MingcuteEdit2Line from "../../icons/MingcuteEdit2Line.tsx";
 import MingcuteDelete2Line from "../../icons/MingcuteDelete2Line.tsx";
 
-function Result(): ReactNode {
-  const {dreams , removeDream , setEditingDream} = useContext(DreamsContext)
+import {Dream} from "../../types/dream.ts"
 
-  return (
-    <ul className={styles.result}>
-      {dreams.map((dream) => (
-        <li key={dream.title}>
-          <div className={styles.title}>{dream.title}</div>
-          <div className={styles.actions}>
-            <Button color="primary" variant="ghost" size="small" shape="square" onClick={() => setEditingDream(dream)}>
-              <MingcuteEdit2Line />
-            </Button>
-            <Button color="danger" variant="ghost" size="small" shape="square" onClick={() => removeDream(dream.id)}>
-              <MingcuteDelete2Line />
-            </Button>
-          </div>
-        </li>
-      ))}
-    </ul>
-  );
+import styles from "./Result.module.css";
+
+function Result(): ReactNode {
+    const {dreams, removeDream} = useContext(DreamsContext)
+
+    const [editingDream, setEditingDream] = useState<Dream | null>(null)
+
+    const modalRef = useRef<TaskModalRef>(null)
+
+    const editButtonClickHandler = (dream : Dream) : void => {
+        setEditingDream(dream)
+        modalRef.current?.showModal();
+    }
+
+    return (<>
+            <ul className={styles.result}>
+                {dreams.map((dream) => (
+                    <li key={dream.title}>
+                        <div className={styles.title}>{dream.title}</div>
+                        <div className={styles.actions}>
+                            <Button color="primary" variant="ghost" size="small" shape="square"
+                                    onClick={() => editButtonClickHandler(dream)}>
+                                <MingcuteEdit2Line/>
+                            </Button>
+                            <Button color="danger" variant="ghost" size="small" shape="square"
+                                    onClick={() => removeDream(dream.id)}>
+                                <MingcuteDelete2Line/>
+                            </Button>
+                        </div>
+                    </li>
+                ))}
+            </ul>
+            <TaskModal ref={modalRef} editingDream={editingDream}/>
+        </>
+    );
 }
 
 export default Result;

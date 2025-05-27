@@ -15,12 +15,13 @@ import styles from "./TaskForm.module.css";
 import {Vibe} from "../../types/vibe.ts";
 
 type Props = {
+    editingDream? : Dream;
     onCancel: VoidFunction;
     onSubmit: VoidFunction;
 }
 
-function TaskForm({onCancel, onSubmit}: Props): ReactNode {
-    const {createDream ,editDream, editingDream} = useContext(DreamsContext)
+function TaskForm({editingDream , onCancel, onSubmit}: Props): ReactNode {
+    const {createDream ,editDream} = useContext(DreamsContext)
 
     function formSubmitHandler(e: FormEvent<HTMLFormElement>): void {
         e.preventDefault();
@@ -51,7 +52,9 @@ function TaskForm({onCancel, onSubmit}: Props): ReactNode {
 
     return (
         <form className={styles["create-form"]} onSubmit={formSubmitHandler}>
-            <div className={styles.title}>Create a New Dream</div>
+            <div className={styles.title}>
+                {editingDream ? `Edit ${editingDream.title}` : "Create a New Dream"}
+            </div>
             <TextInput name='title' placeholder="Input your title ..." defaultValue={editingDream?.title}/>
             <TextArea name='description' placeholder="Input your description ..." defaultValue={editingDream?.description}/>
             <DateInput name='date' defaultValue={toDateString(editingDream?.date)}/>
@@ -68,7 +71,9 @@ function TaskForm({onCancel, onSubmit}: Props): ReactNode {
                 <Button variant="outlined" type="button" onClick={onCancel}>
                     Cancel
                 </Button>
-                <Button>Apply</Button>
+                <Button>
+                    {editingDream ? "Edit" : "Submit"}
+                </Button>
             </div>
         </form>
     )

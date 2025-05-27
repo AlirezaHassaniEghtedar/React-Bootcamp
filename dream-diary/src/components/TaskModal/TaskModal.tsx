@@ -1,23 +1,20 @@
-import {forwardRef, ReactNode, useContext, useEffect, useImperativeHandle, useRef} from "react";
+import {forwardRef, ReactNode, useImperativeHandle, useRef} from "react";
 
 import TaskForm from "../TaskForm/TaskForm.tsx";
 
-import {DreamsContext} from "../../context/dreams-context.ts";
+import {Dream} from "../../types/dream.ts"
 
 import styles from "./TaskModal.module.css";
 
 export type TaskModalRef = Pick<HTMLDialogElement, "showModal" | "close">
 
-const TaskModal = forwardRef<TaskModalRef>(function TaskModal(_, outerRef): ReactNode {
-    const {editingDream, setEditingDream} = useContext(DreamsContext)
+type Props = {
+    editingDream?: Dream
+}
+
+const TaskModal = forwardRef<TaskModalRef, Props>(function TaskModal({editingDream}, outerRef): ReactNode {
 
     const innerRef = useRef<HTMLDialogElement>(null);
-
-    useEffect(() => {
-        if (editingDream) {
-            innerRef.current?.showModal()
-        }
-    }, [editingDream]);
 
     useImperativeHandle(outerRef, () => ({
         showModal: (): void => {
@@ -30,12 +27,10 @@ const TaskModal = forwardRef<TaskModalRef>(function TaskModal(_, outerRef): Reac
 
     function closeModal(): void {
         innerRef.current?.close();
-        setEditingDream(null)
     }
 
     return <dialog ref={innerRef} className={styles["task-modal"]}>
-        {editingDream && <TaskForm onCancel={closeModal} onSubmit={closeModal}/>}
-        {!editingDream && <TaskForm onCancel={closeModal} onSubmit={closeModal}/>}
+        <TaskForm editingDream={editingDream} onCancel={closeModal} onSubmit={closeModal}/>
     </dialog>
 })
 
