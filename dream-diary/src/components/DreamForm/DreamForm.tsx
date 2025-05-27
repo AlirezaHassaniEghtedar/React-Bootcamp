@@ -10,7 +10,7 @@ import {DreamsContext} from "../../context/dreams-context.ts";
 
 import MingcuteDownFill from "../../icons/MingcuteDownFill.tsx";
 
-import styles from "./TaskForm.module.css";
+import styles from "./DreamForm.module.css";
 
 import {Vibe} from "../../types/vibe.ts";
 import {Dream} from "../../types/dream.ts";
@@ -21,7 +21,7 @@ type Props = {
     onSubmit: VoidFunction;
 }
 
-function TaskForm({editingDream, onCancel, onSubmit}: Props): ReactNode {
+function DreamForm({editingDream, onCancel, onSubmit}: Props): ReactNode {
     const {createDream, editDream} = useContext(DreamsContext)
 
     const [dream, setDream] = useState<Dream>(generateEmptyDream)
@@ -87,4 +87,4 @@ function generateEmptyDream(): Dream {
     }
 }
 
-export default TaskForm;
+export default DreamForm;
