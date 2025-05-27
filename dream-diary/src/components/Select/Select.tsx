@@ -1,4 +1,4 @@
-import {ComponentProps, ReactNode} from "react";
+import {ComponentProps, forwardRef, ReactNode} from "react";
 
 import {SelectOption} from "../../types/select-options.ts";
 import {Variant} from "../../types/select-variant.ts";
@@ -12,10 +12,10 @@ type Props = ComponentProps<"select"> & {
     suffixIcon: ReactNode;
 };
 
-function Select({variant = "solid", options, suffixIcon , ...otherProps}: Props): ReactNode {
+const Select = forwardRef<HTMLSelectElement , Props>( function Select({variant = "solid", options, suffixIcon , ...otherProps}: Props , ref): ReactNode {
     return (
         <div className={clsx(styles.select, styles[variant])}>
-            <select {...otherProps}>
+            <select ref={ref} {...otherProps}>
                 {options.map((option) => (
                     <option key={option.value} value={option.value}>
                         {option.label}
@@ -25,6 +25,6 @@ function Select({variant = "solid", options, suffixIcon , ...otherProps}: Props)
             <div className={styles.suffix}>{suffixIcon}</div>
         </div>
     );
-}
+})
 
 export default Select;

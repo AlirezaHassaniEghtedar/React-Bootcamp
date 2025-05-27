@@ -42,7 +42,7 @@ function Result(): ReactNode {
                     </li>
                 ))}
             </ul>
-            <TaskModal ref={modalRef} editingDream={editingDream}/>
+            <TaskModal ref={modalRef} editingDream={editingDream ?? undefined}/>
         </>
     );
 }

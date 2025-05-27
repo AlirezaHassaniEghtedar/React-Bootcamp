@@ -38,6 +38,8 @@ function TaskForm({editingDream, onCancel, onSubmit}: Props): ReactNode {
         } else {
             createDream(dream)
         }
+        
+        setDream(generateEmptyDream())
 
         onSubmit()
     }
