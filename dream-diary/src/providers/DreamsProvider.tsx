@@ -43,6 +43,5 @@ function loadDreamsInitialState(): Dream[] {
         return []
     }
 
-    const parsedDreams = JSON.parse(item) as LocalStorageDream[];
-    return parsedDreams.map(dream => ({...dream, date: new Date(dream.date)}));
+    return JSON.parse(item);
 }

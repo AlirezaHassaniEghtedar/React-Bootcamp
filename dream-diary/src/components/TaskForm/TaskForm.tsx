@@ -1,4 +1,4 @@
-import {FormEvent, ReactNode, useContext} from "react";
+import {FormEvent, ReactNode, useContext, useEffect, useState} from "react";
 
 import TextInput from "../TextInput/TextInput.tsx";
 import TextArea from "../TextArea/TextArea.tsx";
@@ -13,38 +13,30 @@ import MingcuteDownFill from "../../icons/MingcuteDownFill.tsx";
 import styles from "./TaskForm.module.css";
 
 import {Vibe} from "../../types/vibe.ts";
+import {Dream} from "../../types/dream.ts";
 
 type Props = {
-    editingDream? : Dream;
+    editingDream?: Dream;
     onCancel: VoidFunction;
     onSubmit: VoidFunction;
 }
 
-function TaskForm({editingDream , onCancel, onSubmit}: Props): ReactNode {
-    const {createDream ,editDream} = useContext(DreamsContext)
+function TaskForm({editingDream, onCancel, onSubmit}: Props): ReactNode {
+    const {createDream, editDream} = useContext(DreamsContext)
+
+    const [dream, setDream] = useState<Dream>(generateEmptyDream)
+
+    useEffect(() => {
+        setDream(editingDream ? { ...editingDream } : generateEmptyDream())
+    }, [editingDream]);
 
     function formSubmitHandler(e: FormEvent<HTMLFormElement>): void {
         e.preventDefault();
 
-        const formData = new FormData(e.currentTarget)
-
-        console.log(formData.get('title'))
-        console.log(formData.get('description'))
-        console.log(formData.get('date'))
-        console.log(formData.get('vibe'))
-
-        const dream = {
-            id: editingDream?.id ?? crypto.randomUUID(),
-            title: formData.get('title') as string,
-            description: formData.get('description') as string,
-            date: new Date(formData.get('date') as string),
-            vibe: formData.get('vibe') as Vibe
-        }
-
-        if(editingDream) {
+        if (editingDream) {
             editDream(dream)
         } else {
-        createDream(dream)
+            createDream(dream)
         }
 
         onSubmit()
@@ -55,9 +47,13 @@ function TaskForm({editingDream , onCancel, onSubmit}: Props): ReactNode {
             <div className={styles.title}>
                 {editingDream ? `Edit ${editingDream.title}` : "Create a New Dream"}
             </div>
-            <TextInput name='title' placeholder="Input your title ..." defaultValue={editingDream?.title}/>
-            <TextArea name='description' placeholder="Input your description ..." defaultValue={editingDream?.description}/>
-            <DateInput name='date' defaultValue={toDateString(editingDream?.date)}/>
+            <TextInput name='title' placeholder="Input your title ..." value={dream.title}
+                       onChange={(e) => setDream((old) => ({...old, title: e.target.value}))}/>
+            <TextArea name='description' placeholder="Input your description ..."
+                      value={dream.description}
+                      onChange={(e) => setDream((old) => ({...old, description: e.target.value}))}/>
+            <DateInput name='date' value={dream.date}
+                       onChange={(e) => setDream((old) => ({...old, date: e.target.value}))}/>
             <Select name='vibe'
                     variant="outlined"
                     options={[
@@ -65,7 +61,7 @@ function TaskForm({editingDream , onCancel, onSubmit}: Props): ReactNode {
                         {value: "bad", label: "Bad"},
                     ]}
                     suffixIcon={<MingcuteDownFill/>}
-                    defaultValue={editingDream?.vibe}
+                    value={dream.vibe} onChange={(e) => setDream((old) => ({...old, vibe: e.target.value as Vibe}))}
             />
             <div className={styles.actions}>
                 <Button variant="outlined" type="button" onClick={onCancel}>
@@ -79,14 +75,14 @@ function TaskForm({editingDream , onCancel, onSubmit}: Props): ReactNode {
     )
 }
 
-function toDateString(date : Date | undefined) : string {
-    if(!date) return "";
-
-    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`
-}
-
-function pad(text : number) : string {
-    return text.toString().padStart(2 , "0");
+function generateEmptyDream(): Dream {
+    return {
+        id: crypto.randomUUID(),
+        title: "",
+        description: "",
+        date: "",
+        vibe: "good"
+    }
 }
 
 export default TaskForm;
