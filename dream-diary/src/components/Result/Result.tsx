@@ -13,7 +13,7 @@ import {Dream} from "../../types/dream.ts"
 import styles from "./Result.module.css";
 
 function Result(): ReactNode {
-    const {dreams, removeDream} = useContext(DreamsContext)
+    const {removeDream , filteredDreams} = useContext(DreamsContext)
 
     const [editingDream, setEditingDream] = useState<Dream | null>(null)
 
@@ -26,7 +26,7 @@ function Result(): ReactNode {
 
     return (<>
             <ul className={styles.result}>
-                {dreams.map((dream) => (
+                {filteredDreams.map((dream) => (
                     <li key={dream.title}>
                         <div className={styles.title}>{dream.title}</div>
                         <div className={styles.actions}>

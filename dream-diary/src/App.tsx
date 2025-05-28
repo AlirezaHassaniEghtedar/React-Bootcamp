@@ -20,7 +20,7 @@ function App(): ReactNode {
                 <BackgroundLayer/>
                 <Header/>
                 <main>
-                    <Toolbar/>
+                    <Toolbar />
                     <Result/>
                 </main>
                 <Create/>

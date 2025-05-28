@@ -1,0 +1,1 @@
+export type VibeFilterSelection = "all" | "good" | "bad";
