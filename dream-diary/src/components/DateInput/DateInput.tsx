@@ -5,11 +5,12 @@ import clsx from "clsx";
 
 type Props = ComponentProps<"input">;
 
-function DateInput({className, ...otherProps}: Props): ReactNode {
+function DateInput({className , value, ...otherProps}: Props): ReactNode {
     return (
         <input
             type="date"
             className={clsx(styles["date-input"], className)}
+            { ...(value ? { value } : {})}
             {...otherProps}
         />
     );
