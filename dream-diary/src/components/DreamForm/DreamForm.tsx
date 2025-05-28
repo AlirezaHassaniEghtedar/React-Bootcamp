@@ -6,6 +6,8 @@ import DateInput from "../DateInput/DateInput.tsx";
 import Select from "../Select/Select.tsx";
 import Button from "../Button/Button.tsx";
 
+import {MODAL_CONTAINER_ID} from "../../constants/id.ts";
+
 import {DreamsContext} from "../../context/dreams-context.ts";
 
 import MingcuteDownFill from "../../icons/MingcuteDownFill.tsx";
@@ -14,6 +16,7 @@ import styles from "./DreamForm.module.css";
 
 import {Vibe} from "../../types/vibe.ts";
 import {Dream} from "../../types/dream.ts";
+import {toast} from "react-toastify";
 
 type Props = {
     editingDream?: Dream;
@@ -27,18 +30,35 @@ function DreamForm({editingDream, onCancel, onSubmit}: Props): ReactNode {
     const [dream, setDream] = useState<Dream>(generateEmptyDream)
 
     useEffect(() => {
-        setDream(editingDream ? { ...editingDream } : generateEmptyDream())
+        setDream(editingDream ? {...editingDream} : generateEmptyDream())
     }, [editingDream]);
 
     function formSubmitHandler(e: FormEvent<HTMLFormElement>): void {
         e.preventDefault();
+
+        if (!dream.title) {
+            toast.error("Title is required." , {containerId : MODAL_CONTAINER_ID})
+            return;
+        }
+        if (!dream.description) {
+            toast.error("Description is required." , {containerId : MODAL_CONTAINER_ID})
+            return;
+        }
+        if (!dream.date) {
+            toast.error("Date is required." , {containerId : MODAL_CONTAINER_ID})
+            return;
+        }
+        if (!dream.vibe) {
+            toast.error("Vibe is required." , {containerId : MODAL_CONTAINER_ID})
+            return;
+        }
 
         if (editingDream) {
             editDream(dream)
         } else {
             createDream(dream)
         }
-        
+
         setDream(generateEmptyDream())
 
         onSubmit()
