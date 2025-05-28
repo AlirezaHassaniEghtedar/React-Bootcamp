@@ -4,3 +4,12 @@
   inset-inline-end: 2rem;
   inset-block-end: 2rem;
 }
+
+@media (max-width: 480px) {
+  .create {
+    inset-inline-end: 1rem;
+    inset-block-end: 1rem;
+  }
+}
+
+
