@@ -74,7 +74,7 @@ function DreamForm({editingDream, onCancel, onSubmit}: Props): ReactNode {
             <TextArea name='description' placeholder="Input your description ..."
                       value={dream.description}
                       onChange={(e) => setDream((old) => ({...old, description: e.target.value}))}/>
-            <DateInput name='date' value={dream.date}
+            <DateInput name='date' value={dream.date} placeholder={"mm/dd/yyyy"}
                        onChange={(e) => setDream((old) => ({...old, date: e.target.value}))}/>
             <Select name='vibe'
                     variant="outlined"
