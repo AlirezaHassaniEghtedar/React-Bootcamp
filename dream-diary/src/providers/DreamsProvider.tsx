@@ -21,17 +21,32 @@ export default function DreamsProvider({children}: Props): ReactNode {
     }, [dreams]);
 
     const createDream = (dream: Dream): void => {
-        setDreams(old => [...old, {...dream}])
+        setDreams(old => {
+            const updatedDreams = [...old, {...dream}];
+
+            setFilteredDreams(updatedDreams);
+            return updatedDreams;
+        })
         toast.success("Dream created successfully.")
     }
 
     const editDream = (dream: Dream): void => {
-        setDreams((old) => old.map((x) => (x.id === dream.id ? {...dream} : x)))
+        setDreams((old) => {
+            const updatedDreams = old.map((x) => (x.id === dream.id ? {...dream} : x));
+
+            setFilteredDreams(updatedDreams);
+            return updatedDreams;
+        })
         toast.success("Dream edited successfully.")
     };
 
     const removeDream = (id: string): void => {
-        setDreams(old => old.filter(x => x.id !== id))
+        setDreams(old => {
+            const updatedDreams = old.filter(x => x.id !== id);
+
+            setFilteredDreams(updatedDreams)
+            return updatedDreams
+        })
         toast.success("Dream removed successfully.")
     }
 
