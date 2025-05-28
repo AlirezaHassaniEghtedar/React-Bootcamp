@@ -40,3 +40,9 @@
     outline: 2px solid var(--color-primary-outline);
   }
 }
+
+@media (max-width: 480px) {
+  .text-input {
+    inline-size: 100%;
+  }
+}

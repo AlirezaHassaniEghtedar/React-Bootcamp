@@ -10,3 +10,9 @@
     flex-grow: 1;
   }
 }
+
+@media (max-width: 480px) {
+  .toolbar {
+    flex-wrap: wrap-reverse;
+  }
+}
