@@ -1,4 +1,6 @@
 :root {
+  color-scheme: dark;
+
   --color-white: hsl(0, 0%, 100%);
   --color-black: hsl(223, 100%, 7%);
 
@@ -29,6 +31,8 @@
   --transition: all ease 0.3s;
 
   &[data-theme="light"] {
+    color-scheme: light;
+
     --color-bg-layer: hsl(223, 100%, 100%, 85%);
 
     --color-surface: var(--color-white);
