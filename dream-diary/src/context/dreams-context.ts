@@ -11,7 +11,7 @@ type DreamsContextValue = {
     filteredDreams: Dream[];
     vibeFilter: VibeFilterSelection;
     setVibeFilter:  Dispatch<SetStateAction<VibeFilterSelection>>;
-    handleFilterDreamsList : (vibe : VibeFilterSelection) => void
+    handleFilterDreamsList : (vibe : VibeFilterSelection , searchTitle : string) => void;
 }
 
 export const DreamsContext = createContext<DreamsContextValue>({

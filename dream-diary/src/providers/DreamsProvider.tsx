@@ -50,16 +50,15 @@ export default function DreamsProvider({children}: Props): ReactNode {
         toast.success("Dream removed successfully.")
     }
 
-    const handleFilterDreamsList = (vibe: VibeFilterSelection): void => {
-        setVibeFilter(vibe)
+    const handleFilterDreamsList = (vibe: VibeFilterSelection , searchDreams : string): void => {
+        const upgradedDreams = [ ...dreams].filter(dream => dream.title.includes(searchDreams))
 
         if (vibe === "all") {
-            setFilteredDreams(dreams)
+            setFilteredDreams(upgradedDreams)
             return;
         }
-        setFilteredDreams([...dreams].filter(dream => dream.vibe === vibe))
-        console.log("dreams : ")
-        console.log(dreams)
+
+        setFilteredDreams(upgradedDreams.filter(dream => dream.vibe === vibe))
     }
 
     return (
