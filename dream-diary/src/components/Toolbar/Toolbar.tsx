@@ -3,6 +3,7 @@ import {ReactNode, useContext, useState} from "react";
 import TextInput from "../TextInput/TextInput.tsx";
 import Select from "../Select/Select.tsx";
 import Button from "../Button/Button.tsx";
+import LanguageButton from "../LanguageButton/LanguageButton.tsx";
 
 import MingcuteSearch3Line from "../../icons/MingcuteSearch3Line.tsx";
 import MingcuteDownFill from "../../icons/MingcuteDownFill.tsx";
@@ -15,7 +16,6 @@ import {ThemeContext} from "../../context/theme-context.ts";
 import {DreamsContext} from "../../context/dreams-context.ts";
 
 import {VibeFilterSelection} from "../../types/vibe-filter-selection.ts";
-
 
 function Toolbar(): ReactNode {
     const {theme, toggleTheme} = useContext(ThemeContext)
@@ -58,6 +58,7 @@ function Toolbar(): ReactNode {
                 }}
                 suffixIcon={<MingcuteDownFill/>}
             />
+            <LanguageButton />
             <Button variant="solid" size="large" shape="square" onClick={toggleTheme}>
                 {theme === "dark" ? <MingcuteSunLine/> : <MingcuteMoonLine/>}
             </Button>

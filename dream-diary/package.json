@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
+    "i18next": "^25.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-i18next": "^15.5.2",
     "react-toastify": "^11.0.5"
   },
   "devDependencies": {
