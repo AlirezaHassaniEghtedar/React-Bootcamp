@@ -54,7 +54,7 @@ const validationRules: validationRule[] = [
             today.setHours(23 , 59 , 59 , 999)
             return dreamDate <= today;
         },
-        messageKey: "validation.date.future"
+        messageKey: "validation.date.invalid"
     }
 ];
 
