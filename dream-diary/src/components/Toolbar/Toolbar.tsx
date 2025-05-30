@@ -1,5 +1,7 @@
 import {ReactNode, useContext, useState} from "react";
 
+import {useTranslation} from "react-i18next";
+
 import TextInput from "../TextInput/TextInput.tsx";
 import Select from "../Select/Select.tsx";
 import Button from "../Button/Button.tsx";
@@ -18,6 +20,8 @@ import {DreamsContext} from "../../context/dreams-context.ts";
 import {VibeFilterSelection} from "../../types/vibe-filter-selection.ts";
 
 function Toolbar(): ReactNode {
+    const {t} = useTranslation()
+
     const {theme, toggleTheme} = useContext(ThemeContext)
     const {vibeFilter, handleFilterDreamsList, setVibeFilter} = useContext(DreamsContext)
 
@@ -31,7 +35,7 @@ function Toolbar(): ReactNode {
         <div className={styles.toolbar}>
             <TextInput
                 className={styles["input-container"]}
-                placeholder="Search Note ..."
+                placeholder={t("toolbar.search.placeholder")}
                 suffixIcon={<MingcuteSearch3Line/>}
                 value={searchDreams}
                 onChange={(e) => {
@@ -43,9 +47,9 @@ function Toolbar(): ReactNode {
             />
             <Select
                 options={[
-                    {value: "all", label: "All"},
-                    {value: "good", label: "Good"},
-                    {value: "bad", label: "Bad"},
+                    {value: "all", label: t("dreams.form.vibe.all")},
+                    {value: "good", label: t("dreams.form.vibe.good")},
+                    {value: "bad", label: t("dreams.form.vibe.bad")},
                 ]}
                 value={vibeFilter}
                 onChange={(e) => {

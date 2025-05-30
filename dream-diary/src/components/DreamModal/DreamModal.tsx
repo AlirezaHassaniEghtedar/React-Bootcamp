@@ -5,9 +5,9 @@ import Toaster from "../Toaster/Toaster.tsx";
 
 import {Dream} from "../../types/dream.ts"
 
-import styles from "./DreamModal.module.css";
-
 import {MODAL_CONTAINER_ID} from "../../constants/id.ts";
+
+import styles from "./DreamModal.module.css";
 
 export type DreamModalRef = Pick<HTMLDialogElement, "showModal" | "close">
 

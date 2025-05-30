@@ -1,5 +1,8 @@
 import {FormEvent, ReactNode, useContext, useEffect, useState} from "react";
 
+import {toast} from "react-toastify";
+import {useTranslation} from "react-i18next";
+
 import TextInput from "../TextInput/TextInput.tsx";
 import TextArea from "../TextArea/TextArea.tsx";
 import DateInput from "../DateInput/DateInput.tsx";
@@ -16,7 +19,7 @@ import styles from "./DreamForm.module.css";
 
 import {Vibe} from "../../types/vibe.ts";
 import {Dream} from "../../types/dream.ts";
-import {toast} from "react-toastify";
+
 
 type Props = {
     editingDream?: Dream;
@@ -25,6 +28,8 @@ type Props = {
 }
 
 function DreamForm({editingDream, onCancel, onSubmit}: Props): ReactNode {
+    const {t} = useTranslation()
+
     const {createDream, editDream} = useContext(DreamsContext)
 
     const [dream, setDream] = useState<Dream>(generateEmptyDream)
@@ -37,19 +42,19 @@ function DreamForm({editingDream, onCancel, onSubmit}: Props): ReactNode {
         e.preventDefault();
 
         if (!dream.title) {
-            toast.error("Title is required." , {containerId : MODAL_CONTAINER_ID})
+            toast.error("Title is required.", {containerId: MODAL_CONTAINER_ID})
             return;
         }
         if (!dream.description) {
-            toast.error("Description is required." , {containerId : MODAL_CONTAINER_ID})
+            toast.error("Description is required.", {containerId: MODAL_CONTAINER_ID})
             return;
         }
         if (!dream.date) {
-            toast.error("Date is required." , {containerId : MODAL_CONTAINER_ID})
+            toast.error("Date is required.", {containerId: MODAL_CONTAINER_ID})
             return;
         }
         if (!dream.vibe) {
-            toast.error("Vibe is required." , {containerId : MODAL_CONTAINER_ID})
+            toast.error("Vibe is required.", {containerId: MODAL_CONTAINER_ID})
             return;
         }
 
@@ -67,30 +72,40 @@ function DreamForm({editingDream, onCancel, onSubmit}: Props): ReactNode {
     return (
         <form className={styles["create-form"]} onSubmit={formSubmitHandler}>
             <div className={styles.title}>
-                {editingDream ? `Edit ${editingDream.title}` : "Create a New Dream"}
+                {editingDream
+                    ? t("dreams.create.edit", {title: editingDream.title})
+                    : t("dreams.create.title")}
             </div>
-            <TextInput name='title' placeholder="Input your title ..." value={dream.title}
-                       onChange={(e) => setDream((old) => ({...old, title: e.target.value}))}/>
-            <TextArea name='description' placeholder="Input your description ..."
-                      value={dream.description}
-                      onChange={(e) => setDream((old) => ({...old, description: e.target.value}))}/>
-            <DateInput name='date' value={dream.date} placeholder={"mm/dd/yyyy"}
-                       onChange={(e) => setDream((old) => ({...old, date: e.target.value}))}/>
+            <TextInput
+                name='title'
+                placeholder={t("dreams.form.title.placeholder")}
+                value={dream.title}
+                onChange={(e) => setDream((old) => ({...old, title: e.target.value}))}/>
+            <TextArea
+                name='description'
+                placeholder={t("dreams.form.description.placeholder")}
+                value={dream.description}
+                onChange={(e) => setDream((old) => ({...old, description: e.target.value}))}/>
+            <DateInput
+                name='date'
+                value={dream.date}
+                placeholder={"mm/dd/yyyy"}
+                onChange={(e) => setDream((old) => ({...old, date: e.target.value}))}/>
             <Select name='vibe'
                     variant="outlined"
                     options={[
-                        {value: "good", label: "Good"},
-                        {value: "bad", label: "Bad"},
+                        {value: "good", label: t("dreams.form.vibe.good")},
+                        {value: "bad", label: t("dreams.form.vibe.bad")},
                     ]}
                     suffixIcon={<MingcuteDownFill/>}
                     value={dream.vibe} onChange={(e) => setDream((old) => ({...old, vibe: e.target.value as Vibe}))}
             />
             <div className={styles.actions}>
                 <Button variant="outlined" type="button" onClick={onCancel}>
-                    Cancel
+                    {t("dreams.actions.cancel")}
                 </Button>
                 <Button>
-                    {editingDream ? "Edit" : "Submit"}
+                    {editingDream ? t("dreams.actions.confirm") : t("dreams.actions.create")}
                 </Button>
             </div>
         </form>
