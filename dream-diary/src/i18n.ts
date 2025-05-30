@@ -4,9 +4,11 @@ import {initReactI18next} from "react-i18next";
 import enTranslation from "./locales/en/translation.json"
 import faTranslation from "./locales/fa/translation.json"
 
-import {LANGUAGE_LOCAL_STORAGE_KEY} from "./constants/local-storage-keys.ts";
+import {getLanguageFromLocalStorage, handleChangeLanguage} from "./utils/i18n-utils.ts";
 
-const resources = {
+export const defaultNS = "translation"
+
+export const resources = {
     en: {
         translation:enTranslation
     },
@@ -28,17 +30,5 @@ i18n
 
 handleChangeLanguage(i18n.language)
 i18n.on("languageChanged" , handleChangeLanguage)
-
-function getLanguageFromLocalStorage () : string {
-    const item = localStorage.getItem(LANGUAGE_LOCAL_STORAGE_KEY);
-    return item === "fa" ? item : "en";
-}
-
-function handleChangeLanguage (language : string) : void {
-    document.documentElement.lang = language;
-    document.documentElement.dir = language === "fa" ? "rtl" : "ltr";
-
-    localStorage.setItem(LANGUAGE_LOCAL_STORAGE_KEY , language)
-}
 
 export default i18n;
