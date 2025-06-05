@@ -1,0 +1,82 @@
+:root {
+  color-scheme: dark;
+
+  --color-white: hsl(0, 0%, 100%);
+  --color-black: hsl(223, 100%, 7%);
+
+  --color-primary: hsl(204, 99%, 52%);
+  --color-primary-hover-fade: hsl(204, 99%, 95%);
+  --color-primary-hover: hsl(204, 96%, 60%);
+  --color-primary-outline: hsl(204, 99%, 52%, 40%);
+
+  --color-danger: hsl(0, 99%, 52%);
+  --color-danger-hover-fade: hsl(0, 99%, 95%);
+  --color-danger-hover: hsl(0, 96%, 44%);
+  --color-danger-outline: hsl(0, 99%, 52%, 40%);
+
+  --color-bg-layer: hsl(223, 100%, 7%, 75%);
+
+  --color-surface: var(--color-black);
+  --color-text: var(--color-white);
+
+  --color-surface-elevated: var(--color-white);
+  --color-text-elevated: var(--color-black);
+
+  --color-backdrop: hsl(0, 0%, 100%, 7%);
+
+  --color-border: hsl(204, 99%, 25%);
+
+  --shadow: 0 4px 140px 0 hsl(0, 0%, 0%, 33%);
+
+  --transition: all ease 0.3s;
+
+  &[data-theme="light"] {
+    color-scheme: light;
+
+    --color-bg-layer: hsl(223, 100%, 100%, 85%);
+
+    --color-surface: var(--color-white);
+    --color-text: var(--color-black);
+  }
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "Vazirmatn", system-ui;
+
+  caret-color: transparent;
+}
+input,
+label,
+select,
+textarea,
+button,
+fieldset,
+legend,
+datalist,
+output,
+option,
+optgroup {
+  font-family: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+
+  inline-size: min(40rem , 100% - 2rem);
+
+  margin-inline: auto;
+}
