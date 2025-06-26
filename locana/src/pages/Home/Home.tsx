@@ -3,6 +3,7 @@ import {ReactNode, useEffect, useState} from "react";
 import AttractionList from "../../components/AttractionList/AttractionList.tsx";
 
 import styles from "./Home.module.css";
+import Filters from "../../components/Filters/Filters.tsx";
 
 function Home () : ReactNode {
     const [attractions, setAttractions] = useState([])
@@ -18,6 +19,7 @@ function Home () : ReactNode {
     }, []);
 
     return <div className={styles["home"]}>
+        <Filters />
         <AttractionList attractions={attractions}/>
     </div>
 }

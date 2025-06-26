@@ -5,12 +5,19 @@
     --color-primary-hover-fade: hsl(204, 99%, 95%);
     --color-primary-hover: hsl(204, 96%, 60%);
 
-    --color-surface: hsl(0, 0%, 95%);
-    --color-surface-elevated: hsl(0, 0%, 99%);
+    --color-surface-300: hsl(0, 0%, 99%);
+    --color-surface-400: hsl(0, 0%, 97%);
 
-    --color-text: hsl(223, 100%, 7%);
+    --color-text-200: hsl(0, 0%, 65%);
+    --color-text-300: hsl(0, 0%, 40%);
+    --color-text-400: hsl(0, 0%, 10%);
 
     --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+
+    --border-radius-100: 0.25rem;
+    --border-radius-200: 0.5rem;
+    --border-radius-300: 0.75rem;
+    --border-radius-400: 1rem;
 }
 
 *,
@@ -53,7 +60,7 @@ a {
 }
 
 body {
-    background-color: var(--color-surface);
+    background-color: var(--color-surface-400);
     color: var(--color-text);
 
     inline-size: min(75rem, 100% - 2rem);
@@ -61,4 +68,8 @@ body {
     margin-inline: auto;
 
     font-size: var(--fz-400);
+}
+
+p {
+    color: var(--color-text-300);
 }
