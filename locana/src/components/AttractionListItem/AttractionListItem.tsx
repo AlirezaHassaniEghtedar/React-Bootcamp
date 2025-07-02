@@ -30,6 +30,13 @@ function AttractionListItem({attraction} : Props) :ReactNode {
                  dangerouslySetInnerHTML={{__html: attraction.description}}
             />
         </div>
+        <ul className={styles.tags}>
+            {
+                attraction.tags.map(tag => (
+                    <li key={tag.id}>{tag.title}</li>
+                ))
+            }
+        </ul>
     </li>
 }
 

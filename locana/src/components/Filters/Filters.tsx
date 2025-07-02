@@ -1,12 +1,19 @@
-import {ReactNode} from "react";
+import {Dispatch, ReactNode, SetStateAction} from "react";
 
 import TagFilter from "./components/TagFilter/TagFilter.tsx";
 
+import {Filters as FiltersType} from "../../types/filters.ts"
+
 import styles from "./Filters.module.css";
 
-function Filters() : ReactNode {
+type Props = {
+    filters : FiltersType
+    setFilters : Dispatch<SetStateAction<FiltersType>>
+}
+
+function Filters({filters , setFilters} : Props) : ReactNode {
     return <div className={styles["filters"]}>
-        <TagFilter />
+        <TagFilter filters={filters} setFilters={setFilters} />
     </div>
 }
 

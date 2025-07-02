@@ -50,6 +50,8 @@
         .description {
             grid-area: description;
 
+            text-align: justify;
+
             overflow: hidden;
 
             display: -webkit-box;
@@ -58,4 +60,23 @@
         }
     }
 
+    .tags {
+        grid-column: 1 / -1;
+
+         display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+
+        > li {
+            background: var(--color-surface-300);
+            color: var(--color-primary);
+            box-shadow: var(--shadow);
+
+            padding: 0.25rem 0.5rem;
+
+            border-radius: var(--border-radius-200);
+
+            font-size: var(--fz-300);
+        }
+    }
 }
