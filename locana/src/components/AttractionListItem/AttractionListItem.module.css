@@ -74,7 +74,7 @@
 
             padding: 0.25rem 0.5rem;
 
-            border-radius: var(--border-radius-200);
+            border-radius: var(--border-radius-100);
 
             font-size: var(--fz-300);
         }

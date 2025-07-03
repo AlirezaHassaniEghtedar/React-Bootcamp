@@ -1,32 +1,13 @@
-import {Dispatch, ReactNode, SetStateAction} from "react";
+import {ReactNode, useContext} from "react";
 
 import {tags} from "../../../../data/tags.ts";
 
-import {Filters as FiltersType} from "../../../../types/filters.ts";
-import {AttractionTag} from "../../../../types/attractions-tag.ts";
+import {FiltersContext} from "../../../../context/filters-context.ts";
 
 import styles from "./TagFilter.module.css";
 
-type Props = {
-    filters: FiltersType
-    setFilters: Dispatch<SetStateAction<FiltersType>>
-}
-
-function TagFilter({filters, setFilters}: Props): ReactNode {
-
-    const toggleTag = (tag: AttractionTag): void => {
-        setFilters(old => {
-            const index = old.tags.findIndex(x => x.id === tag.id);
-
-            if (index === -1) {
-                return {...old, tags: [...old.tags, tag]}
-            }
-
-            const clone = [...old.tags]
-            clone.splice(index, 1)
-            return {...old, tags: clone}
-        })
-    }
+function TagFilter(): ReactNode {
+    const {filters , toggleTag} = useContext(FiltersContext)
 
     return <div className={styles["tag-filter"]}>
         <div className={styles.title}>برچسب</div>

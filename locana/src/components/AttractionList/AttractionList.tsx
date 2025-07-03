@@ -1,19 +1,17 @@
-import {ReactNode} from "react";
-
-import {Attraction} from "../../types/attraction.ts";
+import {ReactNode, useContext} from "react";
 
 import AttractionListItem from "../AttractionListItem/AttractionListItem.tsx";
 
+import {AttractionsContext} from "../../context/attractions-context.ts";
+
 import styles from "./AttractionList.module.css";
 
-type Props = {
-    attractions: Attraction[]
-}
+function AttractionList(): ReactNode {
+    const {filteredAttractions} = useContext(AttractionsContext)
 
-function AttractionList({attractions}: Props): ReactNode {
     return <ul className={styles["attraction-list"]}>
         {
-            attractions.map(attraction => (
+            filteredAttractions.map(attraction => (
                 <AttractionListItem key={attraction.id} attraction={attraction} />
             ))
         }
