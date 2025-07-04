@@ -22,7 +22,7 @@ function AttractionListItem({attraction} : Props) :ReactNode {
             />
         </div>
         <div className={styles.writings}>
-            <Link to="#" className={styles.title}>
+            <Link to={`/attraction/${attraction.id}`} className={styles.title}>
                 {attraction.title}
             </Link>
             <div className={styles.ratings}>{attraction.averageRating}<FluentEmojiFlatStar /></div>
