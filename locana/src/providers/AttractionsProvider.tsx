@@ -14,7 +14,10 @@ function AttractionsProvider({children}: Props): ReactNode {
 
     useEffect(() => {
         const fetchAttractions = async (): Promise<void> => {
-            const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/attraction`);
+            const params = new URLSearchParams();
+            filters.tags.forEach(tag => params.append("tag" , tag.id.toString()))
+
+            const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/attraction?${params.toString()}`);
             const data = await response.json();
 
             setfilteredAttractions(data);
