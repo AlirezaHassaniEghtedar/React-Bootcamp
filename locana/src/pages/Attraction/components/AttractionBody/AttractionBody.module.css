@@ -1,0 +1,28 @@
+.attraction-body {
+    *,
+    *::after,
+    *::before {
+        margin: revert;
+        padding: revert;
+    }
+
+    ul {
+        list-style-type: square;
+    }
+
+    a {
+        color: var(--color-primary);
+
+        text-decoration-line: revert;
+        text-decoration-thickness: revert;
+        text-decoration-style: initial;
+        text-decoration-color: var(--color-primary);
+    }
+
+    img {
+        inline-size: 100%;
+        block-size: auto;
+
+        border-radius: var(--border-radius-100);
+    }
+}

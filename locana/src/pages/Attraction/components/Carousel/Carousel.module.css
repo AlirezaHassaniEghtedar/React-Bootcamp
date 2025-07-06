@@ -1,0 +1,8 @@
+.carousel {
+    img {
+        inline-size: 100%;
+        block-size: auto;
+
+        border-radius: var(--border-radius-100);
+    }
+}
