@@ -1,6 +1,6 @@
 import {ReactNode} from "react";
 
-import styles from "./about.module.css";
+import styles from "./About.module.css";
 
 function About() : ReactNode {
     return <div className={styles["about"]}>این صفحه درباره ما است .</div>
