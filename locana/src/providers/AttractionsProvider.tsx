@@ -1,32 +1,24 @@
-import {PropsWithChildren, ReactNode, useContext, useEffect, useState} from "react";
+import {PropsWithChildren, ReactNode, useContext} from "react";
 
 import {AttractionsContext} from "../context/attractions-context.ts";
 import {FiltersContext} from "../context/filters-context.ts";
 
-import {Attraction} from "../types/attraction.ts";
+import {useQuery} from "@tanstack/react-query";
+import {fetchAttractions} from "../api/fetch-attractions.ts";
 
 type Props = PropsWithChildren;
 
 function AttractionsProvider({children}: Props): ReactNode {
-    const  {filters} = useContext(FiltersContext)
+    const {filters} = useContext(FiltersContext)
 
-    const [filteredAttractions, setfilteredAttractions] = useState<Attraction[]>([])
+    const {data : attractions} = useQuery({
+        queryKey: ["attractions", filters],
+        queryFn: () => fetchAttractions(filters),
+        initialData: []
+    })
 
-    useEffect(() => {
-        const fetchAttractions = async (): Promise<void> => {
-            const params = new URLSearchParams();
-            filters.tags.forEach(tag => params.append("tag" , tag.id.toString()))
 
-            const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/attraction?${params.toString()}`);
-            const data = await response.json();
-
-            setfilteredAttractions(data);
-        }
-
-        fetchAttractions().then();
-    }, [filters]);
-
-    return <AttractionsContext.Provider value={{filteredAttractions}}>
+    return <AttractionsContext.Provider value={{filteredAttractions: attractions}}>
         {children}
     </AttractionsContext.Provider>
 }
