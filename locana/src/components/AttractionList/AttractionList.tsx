@@ -13,16 +13,27 @@ import styles from "./AttractionList.module.css";
 function AttractionList(): ReactNode {
     const {filters} = useContext(FiltersContext)
 
-    const {data} = useQuery({
+    const {data , isLoading , isError , error} = useQuery({
         queryKey: ["attractions", filters],
-        queryFn: () => fetchAttractions(filters),
-        initialData: []
+        queryFn: () => fetchAttractions(filters)
     })
+
+    if(isLoading) {
+        return <>در حال بارگذاری ...</>
+    }
+
+    if(isError) {
+        return <>Error : {error ? error.message : "Unexpected Error."}</>
+    }
+
+    if(!data) {
+        return <>There is no data.</>
+    }
 
     return <ul className={styles["attraction-list"]}>
         {
             data.map(attraction => (
-                <AttractionListItem key={attraction.id} attraction={attraction} />
+                <AttractionListItem key={attraction.id} attraction={attraction}/>
             ))
         }
     </ul>
