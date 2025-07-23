@@ -14,24 +14,25 @@ import styles from "./AttractionList.module.css";
 function AttractionList(): ReactNode {
     const {filters} = useContext(FiltersContext)
 
-    const {data , isLoading , isFetching , isError , error} = useQuery({
+    const {data, isLoading, isFetching, isError, error} = useQuery({
         queryKey: ["attractions", filters],
-        queryFn: () => fetchAttractions(filters)
+        queryFn: () => fetchAttractions(filters),
+        staleTime: 60 * 1000
     })
 
-    if(isLoading) {
-        return <Loading />
+    if (isLoading) {
+        return <Loading/>
     }
 
-    if(isError) {
+    if (isError) {
         return <>Error : {error ? error.message : "Unexpected Error."}</>
     }
 
-    if(!data) {
+    if (!data) {
         return <>There is no data.</>
     }
 
-    return <ul className={styles["attraction-list"]} style={{opacity : isFetching ? "0.5" : "1"}}>
+    return <ul className={styles["attraction-list"]} style={{opacity: isFetching ? "0.5" : "1"}}>
         {
             data.map(attraction => (
                 <AttractionListItem key={attraction.id} attraction={attraction}/>

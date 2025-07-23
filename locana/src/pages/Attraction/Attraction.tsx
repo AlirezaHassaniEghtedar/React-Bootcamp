@@ -15,24 +15,28 @@ import styles from "./Attraction.module.css";
 function Attraction(): ReactNode {
     const {id} = useParams()
 
-    const {data : attraction , isFetching , isError , error} = useQuery({queryKey : ['attraction' , id] , queryFn : () => fetchAttraction(id)})
+    const {data: attraction, isFetching, isError, error} = useQuery({
+        queryKey: ['attraction', id],
+        queryFn: () => fetchAttraction(id),
+        staleTime: 60 * 1000
+    })
 
     if (isFetching) {
         return <>در حال بارگذاری ...</>
     }
 
-    if(isError) {
+    if (isError) {
         return <>Error : {error ? error.message : "Unexpected Error."}</>
     }
 
-    if(!attraction) {
+    if (!attraction) {
         return <>There is no data.</>
     }
 
     return <div className={styles.attraction}>
-        <AttractionSidebar attraction={attraction} />
-        <Carousel attraction={attraction} />
-        <AttractionBody attraction={attraction} />
+        <AttractionSidebar attraction={attraction}/>
+        <Carousel attraction={attraction}/>
+        <AttractionBody attraction={attraction}/>
     </div>
 }
 
