@@ -1,13 +1,29 @@
-import {ReactNode} from "react";
+import { ReactNode } from "react";
+
+import { ErrorBoundary, FallbackProps } from "react-error-boundary";
 
 import TagFilter from "./components/TagFilter/TagFilter.tsx";
 
 import styles from "./Filters.module.css";
 
-function Filters() : ReactNode {
-    return <div className={styles["filters"]}>
+function Filters(): ReactNode {
+  return (
+    <div className={styles["filters"]}>
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
         <TagFilter />
+      </ErrorBoundary>
     </div>
+  );
+}
+
+function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
+  return (
+    <div role="alert">
+      <p>خطای غیر منتظره</p>
+      <pre style={{ color: "red" }}>{error.message}</pre>
+      <button onClick={resetErrorBoundary}>تلاش مجدد</button>
+    </div>
+  );
 }
 
 export default Filters;
