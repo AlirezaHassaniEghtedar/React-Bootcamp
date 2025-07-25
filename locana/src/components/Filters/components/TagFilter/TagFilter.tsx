@@ -6,15 +6,7 @@ import { FiltersContext } from "../../../../context/filters-context.ts";
 
 import styles from "./TagFilter.module.css";
 
-let count = 0;
-
 function TagFilter(): ReactNode {
-  console.log("rendering TagFilter");
-
-  if (count <= 4) {
-    count++;
-    throw new Error("chiz");
-  }
   const { filters, toggleTag } = useContext(FiltersContext);
 
   return (
