@@ -93,5 +93,13 @@
         .writings {
             grid-column: 1 / -1;
         }
+
+        .tags {
+            gap: 0.5rem;
+
+            > li {
+                font-size: var(--fz-400);
+            }
+        }
     }
 }
