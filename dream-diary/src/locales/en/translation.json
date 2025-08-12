@@ -52,5 +52,10 @@
     "search": {
       "placeholder": "Search dreams..."
     }
+  },
+  "formActions": {
+    "create": "Dream created successfully.",
+    "edit": "Dream edited successfully.",
+    "remove": "Dream removed successfully."
   }
 }

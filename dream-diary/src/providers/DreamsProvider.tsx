@@ -1,88 +1,100 @@
-import {PropsWithChildren, ReactNode, useEffect, useState} from "react";
+import { PropsWithChildren, ReactNode, useEffect, useState } from "react";
 
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 
-import {DREAMS_LOCAL_STORAGE_KEY} from "../constants/local-storage-keys.ts";
+import { DREAMS_LOCAL_STORAGE_KEY } from "../constants/local-storage-keys.ts";
 
-import {DreamsContext} from "../context/dreams-context.ts";
+import { DreamsContext } from "../context/dreams-context.ts";
 
-import {Dream} from "../types/dream.ts";
-import {VibeFilterSelection} from "../types/vibe-filter-selection.ts";
+import { Dream } from "../types/dream.ts";
+import { VibeFilterSelection } from "../types/vibe-filter-selection.ts";
+import { useTranslation } from "react-i18next";
 
 type Props = PropsWithChildren;
 
-export default function DreamsProvider({children}: Props): ReactNode {
-    const [dreams, setDreams] = useState<Dream[]>(loadDreamsInitialState);
-    const [filteredDreams, setFilteredDreams] = useState<Dream[]>(dreams);
-    const [vibeFilter, setVibeFilter] = useState<VibeFilterSelection>("all");
+export default function DreamsProvider({ children }: Props): ReactNode {
+  const { t } = useTranslation();
 
-    useEffect(() => {
-        localStorage.setItem(DREAMS_LOCAL_STORAGE_KEY, JSON.stringify(dreams))
-    }, [dreams]);
+  const [dreams, setDreams] = useState<Dream[]>(loadDreamsInitialState);
+  const [filteredDreams, setFilteredDreams] = useState<Dream[]>(dreams);
+  const [vibeFilter, setVibeFilter] = useState<VibeFilterSelection>("all");
 
-    const createDream = (dream: Dream): void => {
-        setDreams(old => {
-            const updatedDreams = [...old, {...dream}];
+  useEffect(() => {
+    localStorage.setItem(DREAMS_LOCAL_STORAGE_KEY, JSON.stringify(dreams));
+  }, [dreams]);
 
-            setFilteredDreams(updatedDreams);
-            return updatedDreams;
-        })
-        toast.success("Dream created successfully.")
+  const createDream = (dream: Dream): void => {
+    setDreams((old) => {
+      const updatedDreams = [...old, { ...dream }];
+
+      setFilteredDreams(updatedDreams);
+      return updatedDreams;
+    });
+    toast.success(t("formActions.create"));
+  };
+
+  const editDream = (dream: Dream): void => {
+    setDreams((old) => {
+      const updatedDreams = old.map((x) =>
+        x.id === dream.id ? { ...dream } : x,
+      );
+
+      setFilteredDreams(updatedDreams);
+      return updatedDreams;
+    });
+    toast.success(t("formActions.edit"));
+  };
+
+  const removeDream = (id: string): void => {
+    setDreams((old) => {
+      const updatedDreams = old.filter((x) => x.id !== id);
+
+      setFilteredDreams(updatedDreams);
+      return updatedDreams;
+    });
+    toast.success(t("formActions.remove"));
+  };
+
+  const handleFilterDreamsList = (
+    vibe: VibeFilterSelection,
+    searchDreams: string,
+  ): void => {
+    const upgradedDreams = [...dreams].filter((dream) =>
+      dream.title.includes(searchDreams),
+    );
+
+    if (vibe === "all") {
+      setFilteredDreams(upgradedDreams);
+      return;
     }
 
-    const editDream = (dream: Dream): void => {
-        setDreams((old) => {
-            const updatedDreams = old.map((x) => (x.id === dream.id ? {...dream} : x));
+    setFilteredDreams(upgradedDreams.filter((dream) => dream.vibe === vibe));
+  };
 
-            setFilteredDreams(updatedDreams);
-            return updatedDreams;
-        })
-        toast.success("Dream edited successfully.")
-    };
-
-    const removeDream = (id: string): void => {
-        setDreams(old => {
-            const updatedDreams = old.filter(x => x.id !== id);
-
-            setFilteredDreams(updatedDreams)
-            return updatedDreams
-        })
-        toast.success("Dream removed successfully.")
-    }
-
-    const handleFilterDreamsList = (vibe: VibeFilterSelection , searchDreams : string): void => {
-        const upgradedDreams = [ ...dreams].filter(dream => dream.title.includes(searchDreams))
-
-        if (vibe === "all") {
-            setFilteredDreams(upgradedDreams)
-            return;
-        }
-
-        setFilteredDreams(upgradedDreams.filter(dream => dream.vibe === vibe))
-    }
-
-    return (
-        <DreamsContext.Provider value={{
-            dreams,
-            createDream,
-            editDream,
-            removeDream,
-            filteredDreams,
-            vibeFilter,
-            setVibeFilter,
-            handleFilterDreamsList
-        }}>
-            {children}
-        </DreamsContext.Provider>
-    )
+  return (
+    <DreamsContext.Provider
+      value={{
+        dreams,
+        createDream,
+        editDream,
+        removeDream,
+        filteredDreams,
+        vibeFilter,
+        setVibeFilter,
+        handleFilterDreamsList,
+      }}
+    >
+      {children}
+    </DreamsContext.Provider>
+  );
 }
 
 function loadDreamsInitialState(): Dream[] {
-    const item = localStorage.getItem(DREAMS_LOCAL_STORAGE_KEY)
+  const item = localStorage.getItem(DREAMS_LOCAL_STORAGE_KEY);
 
-    if (!item) {
-        return []
-    }
+  if (!item) {
+    return [];
+  }
 
-    return JSON.parse(item);
+  return JSON.parse(item);
 }
