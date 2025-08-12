@@ -80,3 +80,18 @@
         }
     }
 }
+
+
+@media only screen and (max-width: 640px) {
+    .attraction-list-item {
+        .visuals {
+            block-size: unset;
+
+            grid-column: 1 / -1;
+        }
+
+        .writings {
+            grid-column: 1 / -1;
+        }
+    }
+}
