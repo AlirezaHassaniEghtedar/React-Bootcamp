@@ -1,6 +1,8 @@
 .attraction {
     display: grid;
-    grid-template-areas: "carousel sidebar" "body sidebar";
+    grid-template-areas:
+            "carousel sidebar"
+            "body sidebar";
     grid-template-columns: minmax(0 , 1fr) 20rem;
     align-items: start;
     gap: 1rem;
@@ -13,5 +15,15 @@
     }
     > :nth-child(3) {
         grid-area: body;
+    }
+}
+
+
+@media only screen and (max-width: 640px) {
+    .attraction {
+        grid-template-areas:
+            "sidebar sidebar"
+            "carousel carousel"
+            "body body";
     }
 }
