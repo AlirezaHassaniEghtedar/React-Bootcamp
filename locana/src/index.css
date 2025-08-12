@@ -12,6 +12,8 @@
     --color-text-300: hsl(0, 0%, 40%);
     --color-text-400: hsl(0, 0%, 10%);
 
+    --color-border-100: hsl(0, 0%, 92%);
+
     --shadow: 0 0 3px 0 rgb(0 0 0 / 0.1), 0 0 2px -1px rgb(0 0 0 / 0.1);
 
     --border-radius-100: 0.25rem;

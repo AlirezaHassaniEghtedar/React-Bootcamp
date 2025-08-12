@@ -12,6 +12,8 @@
 
         font-size: var(--fz-500);
         font-weight: 700;
+
+        border-bottom: 1px solid var(--color-border-100);
     }
 
     .options {
