@@ -50,3 +50,11 @@
         }
     }
 }
+
+@media only screen and (max-width: 640px) {
+    .tag-filter {
+        .options {
+            max-block-size: 7rem;
+        }
+    }
+}
