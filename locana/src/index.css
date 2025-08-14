@@ -65,7 +65,7 @@ a {
 
 body {
     background-color: var(--color-surface-400);
-    color: var(--color-text);
+    color: var(--color-text-400);
 
     inline-size: min(75rem, 100% - 2rem);
 
