@@ -45,3 +45,15 @@
         }
     }
 }
+
+@media only screen and (max-width: 640px) {
+    .carousel {
+        .bullets {
+            .bullet {
+                block-size: 0.75rem;
+                inline-size: 0.75rem;
+                border-width: 1px;
+            }
+        }
+    }
+}
