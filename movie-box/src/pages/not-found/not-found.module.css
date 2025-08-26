@@ -1,0 +1,23 @@
+.not-found {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+
+    gap: 2rem;
+
+    height: 100%;
+
+    text-align: center;
+
+    color: var(--color-text-200);
+
+    h2 {
+        font-size: var(--fz-700);
+        font-weight: 400;
+    }
+
+    h3 {
+        font-size: var(--fz-900);
+        font-weight: 200;
+    }
+}
