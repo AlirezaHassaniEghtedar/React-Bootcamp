@@ -15,17 +15,16 @@ export async function fetchMoviesApi(
 
 function generateUrl(filters: FiltersType): string {
   const params = generateParams(filters);
-  return `/search/movie?${params}`;
+  return `/discover/movie?${params}`;
 }
 
 function generateParams(filters: FiltersType): string {
   const params = new URLSearchParams();
 
-  params.set("query", filters.query);
+  params.set("with_keywords", filters.query);
 
-  filters.genres.forEach((genre) =>
-    params.append("genre", genre.id.toString()),
-  );
+  const combinedGenres = filters.genres.map((x) => x.id).join(",");
+  params.set("with_genres", combinedGenres);
 
   return params.toString();
 }
