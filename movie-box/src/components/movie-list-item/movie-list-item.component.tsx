@@ -1,4 +1,4 @@
-import { type ReactNode, useMemo } from "react";
+import { type ReactNode, useMemo, useState } from "react";
 
 import { Link } from "react-router";
 
@@ -21,6 +21,8 @@ export default function MovieListItemComponent({ movie }: Props): ReactNode {
   const { data: configuration } = useConfigurationQuery();
   const { data: allGenres } = useGenresQuery();
 
+  const [isImageBroken, setIsImageBroken] = useState<boolean>(false);
+
   const movieGenres = useMemo(() => {
     if (!allGenres) {
       return [];
@@ -32,11 +34,14 @@ export default function MovieListItemComponent({ movie }: Props): ReactNode {
   return (
     <li className={styles["movie-list-item"]}>
       <div className={styles.visuals}>
-        <img
-          className={clsx(styles.poster)}
-          src={`${configuration?.images.base_url}${configuration?.images.poster_sizes[0]}${movie.poster_path}`}
-          alt=""
-        />
+        {configuration && movie.poster_path && (
+          <img
+            className={clsx(styles.poster, isImageBroken && styles.broken)}
+            src={`${configuration?.images.base_url}${configuration?.images.poster_sizes[0]}${movie.poster_path}`}
+            alt=""
+            onError={() => setIsImageBroken(true)}
+          />
+        )}
       </div>
       <div className={styles.writings}>
         <Link
