@@ -5,6 +5,7 @@ import { Link } from "react-router";
 import { type MovieListItemType } from "../../types/movie-list-item.type.ts";
 
 import useGenresQuery from "../../queries/use-genres.query.ts";
+import useConfigurationQuery from "../../queries/use-configuration.query.ts";
 
 import FluentEmojiFlatStar from "../../icons/FluentEmojiFlatStar.tsx";
 
@@ -17,6 +18,7 @@ type Props = {
 };
 
 export default function MovieListItemComponent({ movie }: Props): ReactNode {
+  const { data: configuration } = useConfigurationQuery();
   const { data: allGenres } = useGenresQuery();
 
   const movieGenres = useMemo(() => {
@@ -30,7 +32,11 @@ export default function MovieListItemComponent({ movie }: Props): ReactNode {
   return (
     <li className={styles["movie-list-item"]}>
       <div className={styles.visuals}>
-        <img className={clsx(styles.poster)} src={""} alt="" />
+        <img
+          className={clsx(styles.poster)}
+          src={`${configuration?.images.base_url}${configuration?.images.poster_sizes[0]}${movie.poster_path}`}
+          alt=""
+        />
       </div>
       <div className={styles.writings}>
         <Link
