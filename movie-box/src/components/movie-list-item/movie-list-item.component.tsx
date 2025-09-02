@@ -1,19 +1,36 @@
-import { type ReactNode } from "react";
+import { type ReactNode, useMemo } from "react";
 
 import { Link } from "react-router";
 
+import { type MovieListItemType } from "../../types/movie-list-item.type.ts";
+
+import { useQuery } from "@tanstack/react-query";
+import { fetchGenresApi } from "../../api/fetch-genres.api.ts";
+
 import FluentEmojiFlatStar from "../../icons/FluentEmojiFlatStar.tsx";
 
-import type { MovieListItemType } from "../../types/movie-list-item.type.ts";
+import clsx from "clsx";
 
 import styles from "./movie-list-item.module.css";
-import clsx from "clsx";
 
 type Props = {
   movie: MovieListItemType;
 };
 
 export default function MovieListItemComponent({ movie }: Props): ReactNode {
+  const { data: allGenres } = useQuery({
+    queryKey: ["genres"],
+    queryFn: fetchGenresApi,
+  });
+
+  const movieGenres = useMemo(() => {
+    if (!allGenres) {
+      return [];
+    }
+
+    return allGenres.filter((x) => movie.genre_ids.includes(x.id));
+  }, [allGenres, movie.genre_ids]);
+
   return (
     <li className={styles["movie-list-item"]}>
       <div className={styles.visuals}>
@@ -38,8 +55,8 @@ export default function MovieListItemComponent({ movie }: Props): ReactNode {
         <div className={styles.overview}>{movie.overview}</div>
       </div>
       <ul className={styles.tags}>
-        {movie.genre_ids.map((genreId) => (
-          <li key={genreId}>{genreId}</li>
+        {movieGenres.map((genre) => (
+          <li key={genre.id}>{genre.name}</li>
         ))}
       </ul>
     </li>
