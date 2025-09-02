@@ -1,6 +1,6 @@
-import {ReactNode} from "react";
+import { ReactNode } from "react";
 
-import {Route, Routes} from "react-router";
+import { Route, Routes } from "react-router";
 
 import RootLayout from "./layouts/RootLayout/RootLayout.tsx";
 
@@ -14,18 +14,18 @@ import QueryProvider from "./providers/QueryProvider.tsx";
 import "./App.css";
 
 function App(): ReactNode {
-    return (
-        <QueryProvider>
-            <Routes>
-                <Route element={<RootLayout/>}>
-                    <Route index element={<Home/>}/>
-                    <Route path="attraction/:id" element={<Attraction/>}/>
-                    <Route path="about" element={<About/>}/>
-                    <Route path="*" element={<NotFound/>}/>
-                </Route>
-            </Routes>
-        </QueryProvider>
-    )
+  return (
+    <QueryProvider>
+      <Routes>
+        <Route element={<RootLayout />}>
+          <Route index element={<Home />} />
+          <Route path="attraction/:id" element={<Attraction />} />
+          <Route path="about" element={<About />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </QueryProvider>
+  );
 }
 
 export default App;

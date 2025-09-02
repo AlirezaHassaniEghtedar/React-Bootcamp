@@ -7,7 +7,7 @@ export default function FooterComponent(): ReactNode {
 
   return (
     <footer className={styles["footer"]}>
-      <span>تمامی حقوق این سایت متعلق به من میباشد .</span>
+      <span>All rights reserved .</span>
       <span>Copyright &copy; {year}</span>
     </footer>
   );

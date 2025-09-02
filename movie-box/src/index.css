@@ -71,7 +71,7 @@ body {
   background-color: var(--color-surface-400);
   color: var(--color-text-400);
 
-  inline-size: min(75rem, 100% - 2rem);
+  inline-size: min(100rem, 100% - 2rem);
 
   margin-inline: auto;
 

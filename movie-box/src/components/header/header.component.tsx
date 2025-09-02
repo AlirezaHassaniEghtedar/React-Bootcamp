@@ -12,7 +12,7 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  { title: "خانه", href: "/" },
+  { title: "Home", href: "/" },
   { title: "About", href: "/about" },
   { title: "Contact", href: "/contact" },
 ];
