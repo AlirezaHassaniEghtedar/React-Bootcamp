@@ -3,7 +3,7 @@
 
   --color-primary: hsl(204, 99%, 52%);
   --color-primary-hover-fade: hsl(204, 99%, 95%);
-  --color-primary-hover: hsl(204, 96%, 60%);
+  --color-primary-hover: hsl(204, 99%, 48%);
 
   --color-danger: hsl(0, 99%, 52%);
   --color-danger-hover-fade: hsl(0, 99%, 95%);
@@ -12,6 +12,7 @@
   --color-surface-300: hsl(0, 0%, 99%);
   --color-surface-400: hsl(0, 0%, 97%);
 
+  --color-text-100: hsl(0, 0%, 100%);
   --color-text-200: hsl(0, 0%, 65%);
   --color-text-300: hsl(0, 0%, 40%);
   --color-text-400: hsl(0, 0%, 10%);
@@ -24,6 +25,8 @@
   --border-radius-200: 0.5rem;
   --border-radius-300: 0.75rem;
   --border-radius-400: 1rem;
+
+  --transition: all ease 0.3s;
 }
 
 *,

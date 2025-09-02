@@ -2,8 +2,11 @@ import { type FormEvent, type ReactNode, useContext } from "react";
 
 import { FiltersContext } from "../../../../context/filters-context.ts";
 
-import styles from "./query-filter.module.css";
 import FilterCardComponent from "../filter-card/filter-card.component.tsx";
+import TextInputComponent from "../../../text-input/text-input.component.tsx";
+import ButtonComponent from "../../../button/button.component.tsx";
+
+import styles from "./query-filter.module.css";
 
 export default function QueryFilterComponent(): ReactNode {
   const { filters, updateQuery } = useContext(FiltersContext);
@@ -20,13 +23,12 @@ export default function QueryFilterComponent(): ReactNode {
   return (
     <FilterCardComponent title="Query">
       <form className={styles["query-filter"]} onSubmit={formSubmitHandler}>
-        <input
-          type="text"
+        <TextInputComponent
           name="query"
           placeholder="Movile title, actor, ..."
           defaultValue={filters.query}
         />
-        <button>Search</button>
+        <ButtonComponent>Search</ButtonComponent>
       </form>
     </FilterCardComponent>
   );
