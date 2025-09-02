@@ -9,13 +9,8 @@ type Props = PropsWithChildren;
 
 export default function FiltersProvider({ children }: Props): ReactNode {
   const [filters, setFilters] = useState<FiltersType>({
-    query: "Movie",
     genres: [],
   });
-
-  const updateQuery = (query: string): void => {
-    setFilters((old) => ({ ...old, query }));
-  };
 
   const toggleGenre = (genre: GenreType): void => {
     setFilters((old) => {
@@ -27,12 +22,12 @@ export default function FiltersProvider({ children }: Props): ReactNode {
 
       const clone = [...old.genres];
       clone.splice(index, 1);
-      return { ...old, tags: clone };
+      return { ...old, genres: clone };
     });
   };
 
   return (
-    <FiltersContext.Provider value={{ filters, updateQuery, toggleGenre }}>
+    <FiltersContext.Provider value={{ filters, toggleGenre }}>
       {children}
     </FiltersContext.Provider>
   );

@@ -5,6 +5,12 @@
   --color-primary-hover-fade: hsl(204, 99%, 95%);
   --color-primary-hover: hsl(204, 99%, 48%);
 
+  --color-primary-100: hsl(204, 99%, 95%);
+  --color-primary-200: hsl(204, 99%, 85%);
+  --color-primary-300: hsl(204, 99%, 75%);
+  --color-primary-400: hsl(204, 99%, 65%);
+  --color-primary-500: hsl(204, 99%, 55%);
+
   --color-danger: hsl(0, 99%, 52%);
   --color-danger-hover-fade: hsl(0, 99%, 95%);
   --color-danger-hover: hsl(0, 96%, 60%);

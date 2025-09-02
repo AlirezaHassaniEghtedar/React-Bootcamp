@@ -17,6 +17,8 @@
     background-size: 50% 50%;
     background-position: center;
 
+    background-color: var(--color-primary-100);
+
     overflow: hidden;
 
     inline-size: 100%;
