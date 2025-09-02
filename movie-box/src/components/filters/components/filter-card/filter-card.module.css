@@ -5,7 +5,7 @@
   display: grid;
   gap: 0.5rem;
 
-  border-radius: var(--border-radius-400);
+  border-radius: var(--border-radius-200);
 
   .title {
     padding: 0.5rem 1rem;

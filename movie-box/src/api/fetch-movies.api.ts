@@ -6,6 +6,19 @@ import { type MovieType } from "../types/movie.type.ts";
 export async function fetchMoviesApi(
   filters: FiltersType,
 ): Promise<MovieType[]> {
+  const response = await richFetch(generateUrl(filters));
+
+  const data = await response.json();
+
+  return data.results;
+}
+
+function generateUrl(filters: FiltersType): string {
+  const params = generateParams(filters);
+  return `/search/movie?${params}`;
+}
+
+function generateParams(filters: FiltersType): string {
   const params = new URLSearchParams();
 
   params.set("query", filters.query);
@@ -14,9 +27,5 @@ export async function fetchMoviesApi(
     params.append("genre", genre.id.toString()),
   );
 
-  const response = await richFetch(`/search/movie?${params.toString()}`);
-
-  const data = await response.json();
-
-  return data.results;
+  return params.toString();
 }

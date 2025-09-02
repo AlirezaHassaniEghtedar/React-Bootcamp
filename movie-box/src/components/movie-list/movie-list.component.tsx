@@ -6,8 +6,8 @@ import { fetchMoviesApi } from "../../api/fetch-movies.api.ts";
 
 import { FiltersContext } from "../../context/filters-context.ts";
 
-import MovieListItemComponent from "../movie-list-item/movie-list-item.component.tsx";
 import LoadingComponent from "../loading/loading.component.tsx";
+import MovieListItemComponent from "../movie-list-item/movie-list-item.component.tsx";
 
 import styles from "./movie-list.module.css";
 
