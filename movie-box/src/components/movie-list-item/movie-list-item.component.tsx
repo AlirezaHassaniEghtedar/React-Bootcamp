@@ -4,8 +4,7 @@ import { Link } from "react-router";
 
 import { type MovieListItemType } from "../../types/movie-list-item.type.ts";
 
-import { useQuery } from "@tanstack/react-query";
-import { fetchGenresApi } from "../../api/fetch-genres.api.ts";
+import useGenresQuery from "../../queries/use-genres.query.ts";
 
 import FluentEmojiFlatStar from "../../icons/FluentEmojiFlatStar.tsx";
 
@@ -18,10 +17,7 @@ type Props = {
 };
 
 export default function MovieListItemComponent({ movie }: Props): ReactNode {
-  const { data: allGenres } = useQuery({
-    queryKey: ["genres"],
-    queryFn: fetchGenresApi,
-  });
+  const { data: allGenres } = useGenresQuery();
 
   const movieGenres = useMemo(() => {
     if (!allGenres) {
