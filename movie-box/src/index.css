@@ -23,6 +23,18 @@
   --color-text-300: hsl(0, 0%, 40%);
   --color-text-400: hsl(0, 0%, 10%);
 
+  --color-overlay-dark-100: hsl(0 0% 10% / 75%);
+  --color-overlay-dark-200: hsl(0 0% 20% / 75%);
+  --color-overlay-dark-300: hsl(0 0% 30% / 75%);
+  --color-overlay-dark-400: hsl(0 0% 40% / 75%);
+  --color-overlay-dark-500: hsl(0 0% 50% / 75%);
+
+  --color-overlay-light-100: hsl(0 0% 100% / 75%);
+  --color-overlay-light-200: hsl(0 0% 90% / 75%);
+  --color-overlay-light-300: hsl(0 0% 80% / 75%);
+  --color-overlay-light-400: hsl(0 0% 70% / 75%);
+  --color-overlay-light-500: hsl(0 0% 60% / 75%);
+
   --color-border-100: hsl(0, 0%, 92%);
 
   --shadow: 0 0 3px 0 rgb(0 0 0 / 0.1), 0 0 2px -1px rgb(0 0 0 / 0.1);

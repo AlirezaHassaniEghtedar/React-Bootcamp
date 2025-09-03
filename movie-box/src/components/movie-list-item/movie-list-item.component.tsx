@@ -61,7 +61,7 @@ export default function MovieListItemComponent({ movie }: Props): ReactNode {
         </div>
         <div className={styles.overview}>{movie.overview}</div>
       </div>
-      <ul className={styles.tags}>
+      <ul className={styles.genres}>
         {movieGenres.map((genre) => (
           <li key={genre.id}>{genre.name}</li>
         ))}

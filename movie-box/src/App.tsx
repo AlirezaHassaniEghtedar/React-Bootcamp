@@ -19,7 +19,7 @@ function App(): ReactNode {
       <Routes>
         <Route element={<RootLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="attraction/:id" element={<MoviePage />} />
+          <Route path="movie/:id" element={<MoviePage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>

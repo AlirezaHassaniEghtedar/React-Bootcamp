@@ -7,6 +7,7 @@ import { useParams } from "react-router";
 import { fetchMovieApi } from "../../api/fetch-movie.api.ts";
 
 import styles from "./movie.module.css";
+import MovieDetailsComponent from "./components/movie-details/movie-details.component.tsx";
 
 export default function MoviePage(): ReactNode {
   const { id } = useParams();
@@ -34,5 +35,9 @@ export default function MoviePage(): ReactNode {
     return <>There is no data.</>;
   }
 
-  return <div className={styles.movie}>{movie?.title}</div>;
+  return (
+    <div className={styles.movie}>
+      <MovieDetailsComponent movie={movie} />
+    </div>
+  );
 }
